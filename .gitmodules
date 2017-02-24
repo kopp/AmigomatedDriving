@@ -1,0 +1,3 @@
+[submodule "src/external/rosaria"]
+	path = src/external/rosaria
+	url = https://github.com/amor-ros-pkg/rosaria.git
