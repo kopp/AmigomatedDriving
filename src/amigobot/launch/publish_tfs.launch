@@ -1,0 +1,10 @@
+<!-- publish tf messages for the robot -->
+<launch>
+
+  <arg name="model" default="$(find amigobot)/urdf/amigobot.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+</launch>
