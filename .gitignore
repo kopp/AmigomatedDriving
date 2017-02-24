@@ -1,0 +1,5 @@
+# catkin workspace stuff
+.catkin_tools
+build
+devel
+logs
