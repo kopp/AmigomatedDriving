@@ -115,15 +115,21 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
+    src
     ${CURL_INCLUDE_DIRS}
     ${OpenCV_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
 )
 
+
+# hack for qtcreator: include headers in target
+file(GLOB_RECURSE HEADER_FILES *.h)
+
 ## Declare a C++ library
-# add_library(web_cam_receiver
-#   src/${PROJECT_NAME}/web_cam_receiver.cpp
-# )
+add_library(${PROJECT_NAME}
+  src/${PROJECT_NAME}/web_cam_receiver.cpp
+  ${HEADER_FILES}
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -131,7 +137,7 @@ include_directories(
 # add_dependencies(web_cam_receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(web_cam_receiver_node src/node.cpp)
+add_executable(${PROJECT_NAME}_node src/node.cpp)
 
 
 ## Add cmake target dependencies of the executable
@@ -139,7 +145,11 @@ add_executable(web_cam_receiver_node src/node.cpp)
 # add_dependencies(web_cam_receiver_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(web_cam_receiver_node
+target_link_libraries(${PROJECT_NAME}_node
+  ${PROJECT_NAME}
+)
+
+target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
   ${CURL_LIBRARIES}
