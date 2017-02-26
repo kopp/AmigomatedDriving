@@ -1,18 +1,21 @@
 <!-- run the receiver and recrtify its output
 
-     This will publish rectified images in web_cam/image_rect_color.
+     This will publish rectified images in <name space>/image_rect_color.
+
+     Start this launch file from another file as <include ns=..." ...>
+     Make sure that all parameters requred for web_cam_receiver are set.
 
      -->
 
 <launch>
 
     <!-- start receiver in namespace 'web_cam' -->
-    <node ns="web_cam" pkg="web_cam_receiver" type="web_cam_receiver_node" name="web_cam_receiver" respawn="true" />
+    <node pkg="web_cam_receiver" type="web_cam_receiver_node" name="web_cam_receiver" respawn="true" />
     <!-- rectify image
 
          Note: The output from the web_cam_receiver is on the precise topics
          that image_proc listens to by default.
          -->
-    <node ns="web_cam" pkg="image_proc" type="image_proc" name="web_cam_rectifier" respawn="true" />
+    <node pkg="image_proc" type="image_proc" name="web_cam_rectifier" respawn="true" />
 
 </launch>

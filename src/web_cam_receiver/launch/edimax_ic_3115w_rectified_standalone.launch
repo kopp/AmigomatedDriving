@@ -1,0 +1,30 @@
+<!-- run the receiver and recrtify its output
+
+     This will publish rectified images in <name space>/image_rect_color.
+
+     This file can be run standalone and it will set all required paramters for
+     web_cam_receiver from arguments; it assumes an edimax_ic_3115w camera.
+
+     -->
+
+<launch>
+
+    <arg name="namespace" default="web_cam" doc="namespace for all parameters and topics of this camera" />
+    <arg name="camera_name" default="edimax_ic_3115w" doc="identifier for the camera model" />
+    <arg name="camera_resolution" default="sxvga" doc="name of a resolution; calib file should exist" />
+    <arg name="camera_ip" default="10.0.126.9" doc="ip address of the camera" />
+    <arg name="camera_login" default="admin:1234" doc="login information for the camera (user:password)" />
+    <arg name="frame_rate" default="5" doc="rate (in Hz) in which to pull new image" />
+
+    <!-- set parameters used by web_cam_receiver from param; others should be set already -->
+    <param name="$(arg namespace)/frame_id" value="/$(arg namespace)" />
+    <param name="$(arg namespace)/camera_name" value="$(arg camera_name)" />
+    <param name="$(arg namespace)/calibration_url" value="package://web_cam_receiver/calib/${NAME}_$(arg camera_resolution).yml" />
+    <param name="$(arg namespace)/image_url" value="http://$(arg camera_ip)/snapshot.jpg" />
+    <param name="$(arg namespace)/login_info" value="$(arg camera_login)" />
+    <param name="$(arg namespace)/loop_rate_Hz" value="$(arg frame_rate)" />
+
+    <!-- launch nodes -->
+    <include ns="$(arg namespace)" file="$(find web_cam_receiver)/launch/rectified_image.launch" />
+
+</launch>
