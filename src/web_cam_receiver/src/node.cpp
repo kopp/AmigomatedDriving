@@ -54,7 +54,6 @@ int main(int argc, char** argv)
       loop_rate_Hz = 5;
       ROS_WARN_STREAM("param loop_rate_Hz not specified; assuming " << loop_rate_Hz);
     }
-    std::cout << "loop rate: " << loop_rate_Hz << std::endl;
 
     WebCamReceiver receiver(nh,
                             frame_id,
