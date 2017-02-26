@@ -9,13 +9,21 @@
 
 <launch>
 
+    <arg name="view" default="false" doc="set to true to view rectified image" />
+
     <!-- start receiver in namespace 'web_cam' -->
-    <node pkg="web_cam_receiver" type="web_cam_receiver_node" name="web_cam_receiver" respawn="true" />
+    <node pkg="web_cam_receiver" type="web_cam_receiver_node" name="web_cam_receiver" required="true" output="screen" />
     <!-- rectify image
 
          Note: The output from the web_cam_receiver is on the precise topics
          that image_proc listens to by default.
          -->
-    <node pkg="image_proc" type="image_proc" name="web_cam_rectifier" respawn="true" />
+    <node pkg="image_proc" type="image_proc" name="web_cam_rectifier" required="true" />
+
+    <!-- visualize if requested -->
+    <node if="$(arg view)" pkg="image_view" type="image_view" name="web_cam_view_rectified">
+        <remap from="image" to="image_rect_color" />
+    </node>
+
 
 </launch>

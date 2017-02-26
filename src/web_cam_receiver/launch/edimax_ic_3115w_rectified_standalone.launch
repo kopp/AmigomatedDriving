@@ -15,6 +15,7 @@
     <arg name="camera_ip" default="10.0.126.9" doc="ip address of the camera" />
     <arg name="camera_login" default="admin:1234" doc="login information for the camera (user:password)" />
     <arg name="frame_rate" default="5" doc="rate (in Hz) in which to pull new image" />
+    <arg name="view" default="false" doc="see rectified_image.launch" />
 
     <!-- set parameters used by web_cam_receiver from param; others should be set already -->
     <param name="$(arg namespace)/frame_id" value="/$(arg namespace)" />
@@ -25,6 +26,9 @@
     <param name="$(arg namespace)/loop_rate_Hz" value="$(arg frame_rate)" />
 
     <!-- launch nodes -->
-    <include ns="$(arg namespace)" file="$(find web_cam_receiver)/launch/rectified_image.launch" />
+    <include ns="$(arg namespace)" file="$(find web_cam_receiver)/launch/rectified_image.launch" >
+        <!-- forward arguments -->
+        <arg name="view" value="$(arg view)" />
+    </include>
 
 </launch>
