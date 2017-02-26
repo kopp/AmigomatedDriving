@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED cv_bridge sensor_msgs roscpp)
+find_package(catkin REQUIRED cv_bridge sensor_msgs roscpp camera_info_manager)
 
 find_package(OpenCV REQUIRED)
 find_package(CURL REQUIRED)
@@ -114,7 +114,11 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(${CURL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
+include_directories(
+    ${CURL_INCLUDE_DIRS}
+    ${OpenCV_INCLUDE_DIRS}
+    ${catkin_INCLUDE_DIRS}
+)
 
 ## Declare a C++ library
 # add_library(web_cam_receiver
