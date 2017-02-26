@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+
+import rospy
+
+from aruco_msgs.msg import MarkerArray as ArucoMarkerArray
+from visualization_msgs.msg import MarkerArray
+from visualization_msgs.msg import Marker
+
+from std_msgs.msg import String
+
+from copy import deepcopy
+
+
+class MarkerTransformer:
+    """Transform ArucoMarkerArray to MarkerArray"""
+
+    def __init__(self, output_publisher):
+        """
+        :param output_publisher rospy.Publisher: publisher to use for converted array
+        """
+        self._id_counter = 1
+        self._output_publisher = output_publisher
+
+    def _get_new_id(self):
+        """Return new unique id"""
+        self._id_counter += 1
+        return self._id_counter
+
+    def on_marker_array(self, array):
+        """Callback; called when input is received; directly publishes conversion."""
+        out = MarkerArray()
+        for aruco_marker in array.markers:
+            # marker for position/size
+            marker = Marker()
+            marker.header = aruco_marker.header
+            marker.ns = "aruco_marker"
+            marker.id = self._get_new_id()
+            marker.type = Marker.CUBE
+            marker.action = Marker.ADD
+            marker.pose = aruco_marker.pose.pose
+            marker.scale.x = 0.1
+            marker.scale.y = 0.02
+            marker.scale.z = 0.1
+            marker.color.r = 0
+            marker.color.g = 1
+            marker.color.b = 0
+            marker.color.a = 0.8
+            marker.lifetime = rospy.Duration(1, 0)
+            out.markers.append(marker)
+            # text
+            # copy struct and only modify the differences
+            text = deepcopy(marker)
+            text.id = self._get_new_id()
+            text.type = Marker.TEXT_VIEW_FACING
+            text.color.r = 1
+            text.color.g = 0
+            text.text = str(aruco_marker.id)
+            out.markers.append(text)
+        self._output_publisher.publish(out)
+
+def converter():
+    rospy.init_node('convert_aruco_marker_array_to_std_marker', anonymous=True)
+
+    pub = rospy.Publisher("aruco_marker_publisher/visualizable_markers", MarkerArray, queue_size=2)
+    transformer = MarkerTransformer(pub)
+    rospy.Subscriber("aruco_marker_publisher/markers", ArucoMarkerArray, transformer.on_marker_array)
+
+    rospy.spin()
+
+if __name__ == '__main__':
+    converter()

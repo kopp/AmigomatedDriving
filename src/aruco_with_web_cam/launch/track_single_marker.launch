@@ -1,0 +1,34 @@
+<launch>
+
+    <!-- modified from aruco_ros single.launch -->
+
+    <arg name="view"            default="false"     doc="whether to visualize result" />
+    <arg name="web_cam_ns"      default="web_cam"   doc="name space of the web cam images" />
+    <arg name="markerId"        default="93"/>
+    <arg name="markerSize"      default="0.1"/>    <!-- in m -->
+    <arg name="eye"             default="left"/>
+    <arg name="marker_frame"    default="aruco_marker"/>
+    <arg name="ref_frame"       default=""/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+
+
+    <node ns="$(arg web_cam_ns)" pkg="aruco_ros" type="single" name="aruco_single">
+        <!-- input topics; use topics from same ns -->
+        <remap from="/image"             to="image_rect_color" />
+        <remap from="/camera_info"       to="camera_info" />
+
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size"        value="$(arg markerSize)"/>
+        <param name="marker_id"          value="$(arg markerId)"/>
+        <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="camera_frame"       value="/web_cam"/>           <!-- frame wrt/ which the tf of the marker is published to /tf -->
+        <param name="marker_frame"       value="$(arg marker_frame)" />
+    </node>
+
+    <node if="$(arg view)" ns="$(arg web_cam_ns)" pkg="image_view" type="image_view" name="aruco_single_result">
+        <remap from="image" to="aruco_single/result" />
+    </node>
+
+
+
+</launch>
+
