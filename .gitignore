@@ -6,3 +6,6 @@ logs
 
 # qtcreator
 CMakeLists.txt.user
+
+# core dumps
+core
