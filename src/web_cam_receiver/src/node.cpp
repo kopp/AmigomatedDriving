@@ -235,7 +235,7 @@ int main(int argc, char** argv)
     WebCamReceiver receiver(nh,
                             "/web_cam",
                             "edimax_ic_3115w",
-                            "package://web_cam_receiver/calib/${NAME}_qvga.yaml",
+                            "package://web_cam_receiver/calib/${NAME}_sxvga.yml",
                             "http://10.0.126.9/snapshot.jpg",
                             "admin:1234");
 

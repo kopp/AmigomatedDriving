@@ -49,6 +49,8 @@
   <depend>curl</depend>
   <depend>camera_info_manager</depend>
 
+  <!-- used in launch files -->
+  <exec_depend>image_proc</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

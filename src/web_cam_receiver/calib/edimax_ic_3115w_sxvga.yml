@@ -1,0 +1,20 @@
+image_width: 1280
+image_height: 960
+camera_name: edimax_ic_3115w
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [964.210225, 0, 641.143311, 0, 970.305621, 469.733427, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.112401, 0.100513, -0.001982, -0.002838, 0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [937.272644, 0, 636.28658, 0, 0, 947.629272, 467.383216, 0, 0, 0, 1, 0]
