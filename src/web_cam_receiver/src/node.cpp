@@ -6,7 +6,10 @@
 
 #include <cv_bridge/cv_bridge.h> // convert opencv to ros message
 
-#include <sensor_msgs/image_encodings.h> // ros message
+// ros messages
+#include <sensor_msgs/Image.h>
+#include <sensor_msgs/CameraInfo.h>
+#include <sensor_msgs/image_encodings.h>
 
 #include <curl/curl.h> // download data from camera
 
@@ -19,14 +22,16 @@
 #include <camera_info_manager/camera_info_manager.h> // camere interface
 
 
-// Further information about techniques used in this node:
-// http://answers.ros.org/question/99831/publish-file-to-image-topic/
-// https://curl.haxx.se/libcurl/c/example.html
-// http://stackoverflow.com/questions/14727267/opencv-read-jpeg-image-from-buffer
+/// Further information about techniques used in this node:
+///
+/// * http://answers.ros.org/question/99831/publish-file-to-image-topic/
+/// * https://curl.haxx.se/libcurl/c/example.html
+/// * http://stackoverflow.com/questions/14727267/opencv-read-jpeg-image-from-buffer
 
 
 
-
+/// \brief Class that handles connection to the camera, retrival of images
+///        and publishing to ros topics.
 class WebCamReceiver
 {
 private:
@@ -42,7 +47,6 @@ private:
 
   /// provide ros access to camera info stuff
  camera_info_manager::CameraInfoManager camera_manager_;
-
 
   // network
   /// buffer that will be used to collect data from multiple callbacks for one GET request
@@ -91,7 +95,7 @@ protected: // methods
   /// \brief publish image and camera info
   void publishImage(cv::Mat const & decoded_image)
   {
-    // header for message
+    // header for messages
     std_msgs::Header header;
     header.stamp = ros::Time::now();
     header.frame_id = frame_id_;
@@ -99,7 +103,28 @@ protected: // methods
 
     // use cv_bridge to convert to ros msg
     cv_bridge::CvImage cv_image(header, "bgr8", decoded_image);
-    image_pub_.publish(cv_image.toImageMsg());
+    auto image_msg = cv_image.toImageMsg();
+    image_pub_.publish(image_msg);
+
+    // camera info
+    // Note: This will load the configuration from file if that was not done before.
+    auto info_msg = camera_manager_.getCameraInfo();
+    info_msg.header = header;
+
+    // check, whether basic image properties are set correctly
+    if (info_msg.height != image_msg->height || info_msg.width != image_msg->width)
+    {
+      // set them in any case, but warn when the camera was assumed to be calibrated
+      if (camera_manager_.isCalibrated())
+      {
+        ROS_ERROR("camera calibration does not seem to match:"
+                  "different height/width than image from camera.");
+      }
+      info_msg.height = image_msg->height;
+      info_msg.width = image_msg->width;
+    }
+
+    info_pub_.publish(info_msg);
   }
 
 
@@ -113,8 +138,8 @@ public:
                  std::string calibration_url,
                  std::string image_url,
                  std::string login_info)
-    : image_pub_(nh.advertise<sensor_msgs::Image>("image_color", 1))
-    , info_pub_(nh.advertise<sensor_msgs::Image>("camera_info", 1))
+    : image_pub_(nh.advertise<sensor_msgs::Image>("image_raw", 1))
+    , info_pub_(nh.advertise<sensor_msgs::CameraInfo>("camera_info", 1))
     , frame_id_(frame_id)
     , camera_manager_(nh,  camera_name, calibration_url)
   {
