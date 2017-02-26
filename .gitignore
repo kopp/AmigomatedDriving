@@ -3,3 +3,6 @@
 build
 devel
 logs
+
+# qtcreator
+CMakeLists.txt.user
