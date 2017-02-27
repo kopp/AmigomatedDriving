@@ -11,7 +11,7 @@
   <param name="port" value="10.0.126.15:8101"/>
   </node>
 
-  <include file="$(find pointcloud_to_laserscan)/launch/sample_node.launch"/>
+  <include file="$(find amigobot_2dnav)/launch/sample_node.launch"/>
 
   <node name="webcam_receiver" pkg="web_cam_receiver" type="webcam_receiver.py" />
 
