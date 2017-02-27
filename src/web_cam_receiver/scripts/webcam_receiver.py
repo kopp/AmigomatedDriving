@@ -49,7 +49,7 @@ class Camera(object):
 
     def get_frame(self):
         _, frame = self.cam.read()
-        
+
 
 
 def WebcamReceiver():
@@ -72,7 +72,7 @@ def WebcamReceiver():
               image_pub.publish(ros_frame)
         except CvBridgeError as e:
               print(e)
-          
+
         rate.sleep()
 
 if __name__ == '__main__':
