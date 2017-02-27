@@ -1,6 +1,3 @@
 [submodule "src/external/rosaria"]
 	path = src/external/rosaria
 	url = https://github.com/amor-ros-pkg/rosaria.git
-[submodule "src/external/amr-ros-config"]
-	path = src/external/amr-ros-config
-	url = https://github.com/MobileRobots/amr-ros-config.git
