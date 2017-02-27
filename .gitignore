@@ -9,3 +9,6 @@ CMakeLists.txt.user
 
 # core dumps
 core
+
+# temp files
+*~
