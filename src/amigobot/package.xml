@@ -41,8 +41,13 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
+  <!-- robot model -->
   <depend>xacro</depend>
   <depend>amr_robots_description</depend>
+
+  <!-- launch files -->
+  <depend>amigobot_2dnav</depend>
+  <depend>web_cam_receiver</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

@@ -7,7 +7,7 @@
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="jan0@jankleindieck.de">Jan Kleindieck</maintainer>
+  <maintainer email="jan@jankleindieck.de">Jan Kleindieck</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
@@ -41,7 +41,6 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>amigobot</depend>
   <depend>navigation</depend>
   <depend>pointcloud_to_laserscan</depend>
   <depend>teleop_twist_keyboard</depend>
