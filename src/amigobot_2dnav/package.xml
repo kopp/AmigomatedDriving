@@ -45,6 +45,7 @@
   <depend>pointcloud_to_laserscan</depend>
   <depend>teleop_twist_keyboard</depend>
   <depend>slam_gmapping</depend>
+  <depend>move_base</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
