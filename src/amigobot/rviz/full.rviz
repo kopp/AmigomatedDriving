@@ -74,46 +74,54 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        caster_hubcap:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster_swivel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_hub:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_hub:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         sonar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        sonar_0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
           Value: true
+        sonar_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar_7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        top_plate:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         web_cam:
           Alpha: 1
           Show Axes: false
@@ -132,25 +140,25 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
-        caster_hubcap:
-          Value: true
-        caster_swivel:
-          Value: true
-        caster_wheel:
-          Value: true
-        left_hub:
-          Value: true
-        left_wheel:
-          Value: true
-        map:
-          Value: true
-        odom:
-          Value: true
-        right_hub:
-          Value: true
-        right_wheel:
-          Value: true
         sonar:
+          Value: true
+        sonar_0:
+          Value: true
+        sonar_1:
+          Value: true
+        sonar_2:
+          Value: true
+        sonar_3:
+          Value: true
+        sonar_4:
+          Value: true
+        sonar_5:
+          Value: true
+        sonar_6:
+          Value: true
+        sonar_7:
+          Value: true
+        top_plate:
           Value: true
         web_cam:
           Value: true
@@ -160,24 +168,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          {}
-        odom:
-          base_link:
-            caster_swivel:
-              caster_wheel:
-                caster_hubcap:
-                  {}
-            left_hub:
-              left_wheel:
-                {}
-            right_hub:
-              right_wheel:
-                {}
-            sonar:
-              {}
-            web_cam:
-              {}
+        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -357,6 +348,14 @@ Visualization Manager:
       Name: Polygon
       Topic: /move_base/local_costmap/footprint
       Unreliable: false
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /sonar_fov
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:

@@ -1,0 +1,90 @@
+#!/usr/bin/env python
+
+"""Publish field of view for amigobot sonars.
+
+Note: This script requires the more precise urdf model with one tf per sonar.
+
+"""
+
+import rospy
+
+from visualization_msgs.msg import Marker
+from geometry_msgs.msg import Point
+from std_msgs.msg import ColorRGBA
+
+from copy import deepcopy
+
+
+def make_cone(distance, width):
+    cone = [Point(), Point(), Point()]
+    # origin is always included
+    # add left and right points at given distance
+    cone[1].x = distance
+    cone[1].y = -width/2
+    cone[2].x = distance
+    cone[2].y = width/2
+    return cone
+
+
+
+# MEASUREMENT
+# Place a box at different distances x in front of one sensor, then move the
+# box perpendicular to the sensor axis.  Once the sonar does not measure the
+# box any more (but rather something in the distance), mark the border of the
+# box closest to the sonar axis.  Repeat procedure for the other direction
+# perpendicular to the sensor axis.  Measure the distance between these two
+# positions.
+# Measurements:
+# distance/cm   width/cm
+# 100           26
+# 200           38
+# 300           42
+
+# measured fov values
+fov = make_cone(1, 0.26) + make_cone(2, 0.38) + make_cone(3, 0.42) + \
+        make_cone(5, 0.70) # approximaged value
+
+
+global_id = 0
+
+def get_new_id():
+    global global_id
+    global_id += 1
+    return global_id
+
+color = ColorRGBA()
+color.b = 1
+color.a = 0.2
+
+def make_fov(sonar_no, lifetime_s):
+    marker = Marker()
+    marker.header.stamp = rospy.Time.now()
+    marker.header.frame_id = 'sonar_{}'.format(sonar_no)
+    marker.ns = "sonar_fov"
+    marker.id = get_new_id()
+    marker.type = Marker.TRIANGLE_LIST
+    marker.pose.orientation.w = 1
+    marker.scale.x = 1
+    marker.scale.y = 1
+    marker.scale.z = 1
+    marker.action = Marker.ADD
+    marker.lifetime = rospy.Duration(1.02 * lifetime_s, 0) # small overlap of life time
+    marker.points = fov
+    marker.color = color
+    return marker
+
+
+if __name__ == '__main__':
+    rospy.init_node('sonar_fov_visu', anonymous=True)
+    pub = rospy.Publisher("sonar_fov", Marker, queue_size=2)
+
+    rospy.sleep(0.5) # wait for listener :-)
+
+    loop_duration_s = 1.0
+    rate = rospy.Rate(1.0 / loop_duration_s)
+    num_sonars = 8
+
+    while not rospy.is_shutdown():
+        for sonar_no in range(num_sonars):
+            pub.publish(make_fov(sonar_no, num_sonars * loop_duration_s))
+            rate.sleep()
