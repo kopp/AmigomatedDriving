@@ -46,6 +46,9 @@ default catkin workspace layout.
 
         rostopic pub -1 /RosAria/cmd_vel geometry_msgs/Twist '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
 
+Alternatively see [here](https://github.com/kopp/ros-dockers) for how to
+build a docker image with the contents of this package.
+
 
 # README.md
 
