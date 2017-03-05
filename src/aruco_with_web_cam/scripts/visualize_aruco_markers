@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
 import rospy
+import tf2_ros
+import tf2_geometry_msgs
+# Note: Do not use tf as it currently does not support tf_static!
+# see https://github.com/ros/geometry/issues/117
 
 from aruco_msgs.msg import MarkerArray as ArucoMarkerArray
 from visualization_msgs.msg import MarkerArray
@@ -14,12 +18,29 @@ from copy import deepcopy
 class MarkerTransformer:
     """Transform ArucoMarkerArray to MarkerArray"""
 
-    def __init__(self, output_publisher):
+    def __init__(self, output_publisher, collect_in_fixed_frame):
         """
         :param output_publisher rospy.Publisher: publisher to use for converted array
+        :param collect_in_fixed_frame False|(Publisher, fixed_frame, keep_duration):
+            False to not keep and publish data in fixed frame or triple how to
+            store/publish markers in fixed frame.
         """
         self._id_counter = 1
         self._output_publisher = output_publisher
+
+        self._collect_in_fixed_frame = False
+        if collect_in_fixed_frame:
+            self._tf_buffer = tf2_ros.Buffer()
+            self._tf = tf2_ros.TransformListener(self._tf_buffer)
+            self._collect_in_fixed_frame = True
+            self._collection_output = collect_in_fixed_frame[0]
+            self._fixed_frame = collect_in_fixed_frame[1]
+            self._collection_duration = collect_in_fixed_frame[2]
+            self._collection = MarkerArray()
+            # list of elements that need to be appended to _collection but
+            # where the transformation is not performed yet
+            self._to_append = list()
+            self._timer = rospy.Timer(rospy.Duration(0.5), self._on_collection_publish_timer)
 
     def _get_new_id(self):
         """Return new unique id"""
@@ -30,39 +51,103 @@ class MarkerTransformer:
         """Callback; called when input is received; directly publishes conversion."""
         out = MarkerArray()
         for aruco_marker in array.markers:
-            # marker for position/size
-            marker = Marker()
-            marker.header = aruco_marker.header
-            marker.ns = "aruco_marker"
-            marker.id = self._get_new_id()
-            marker.type = Marker.CUBE
-            marker.action = Marker.ADD
-            marker.pose = aruco_marker.pose.pose
-            marker.scale.x = 0.1
-            marker.scale.y = 0.02
-            marker.scale.z = 0.1
-            marker.color.r = 0
-            marker.color.g = 1
-            marker.color.b = 0
-            marker.color.a = 0.8
-            marker.lifetime = rospy.Duration(1, 0)
+            marker, text = self._aruco_to_visual(aruco_marker)
             out.markers.append(marker)
-            # text
-            # copy struct and only modify the differences
-            text = deepcopy(marker)
-            text.id = self._get_new_id()
-            text.type = Marker.TEXT_VIEW_FACING
-            text.color.r = 1
-            text.color.g = 0
-            text.text = str(aruco_marker.id)
             out.markers.append(text)
+            if self._collect_in_fixed_frame:
+                collectable = self._visual_to_collection(marker)
+                if collectable:
+                    self._to_append.append(collectable)
         self._output_publisher.publish(out)
+
+    def _visual_to_collection(self, marker):
+        """Transform visualiztion marker to collection style marker."""
+        collected_marker = deepcopy(marker)
+        collected_marker.lifetime = rospy.Duration(self._collection_duration, 0)
+        collected_marker.color.r = 0
+        collected_marker.color.g = 0
+        collected_marker.color.b = 1
+        collected_marker.color.a = 0.5
+        return collected_marker
+
+    def _aruco_to_visual(self, aruco_marker):
+        """Convert aruco marker to visual marker.
+        :return (Marker, Marker): Visual and textual description
+        """
+        # marker for position/size
+        marker = Marker()
+        marker.header = aruco_marker.header
+        marker.ns = "aruco_marker"
+        marker.id = self._get_new_id()
+        marker.type = Marker.CUBE
+        marker.action = Marker.ADD
+        marker.pose = aruco_marker.pose.pose
+        marker.scale.x = 0.1
+        marker.scale.y = 0.02
+        marker.scale.z = 0.1
+        marker.color.r = 0
+        marker.color.g = 1
+        marker.color.b = 0
+        marker.color.a = 0.8
+        marker.lifetime = rospy.Duration(1, 0)
+        # text
+        # copy struct and only modify the differences
+        text = deepcopy(marker)
+        text.id = self._get_new_id()
+        text.type = Marker.TEXT_VIEW_FACING
+        text.color.r = 1
+        text.color.g = 0
+        text.text = str(aruco_marker.id)
+        return (marker, text)
+
+    def _on_collection_publish_timer(self, event):
+        """Publish what is currently in the collection."""
+        refused = list()
+        while self._to_append:
+            collected_marker = self._to_append.pop(0)
+            try:
+                fixed_T_aruco = self._tf_buffer.lookup_transform(
+                        self._fixed_frame,
+                        collected_marker.header.frame_id,
+                        collected_marker.header.stamp,
+                        rospy.Duration(0.15))
+            except tf2_ros.LookupException as e:
+                refused.append(collected_marker)
+                rospy.logwarn('LookupException: {}'.format(e))
+            except tf2_ros.ConnectivityException as e:
+                refused.append(collected_marker)
+                rospy.logwarn('ConnectivityException: {}'.format(e))
+            except tf2_ros.ExtrapolationException as e:
+                refused.append(collected_marker)
+                rospy.logwarn('ExtrapolationException: {}'.format(e))
+            new_pose = tf2_geometry_msgs.do_transform_pose(collected_marker, fixed_T_aruco)
+            collected_marker.pose = new_pose.pose
+            collected_marker.header.frame_id = self._fixed_frame
+            self._collection.markers.append(collected_marker)
+        self._to_append += refused
+        #rospy.loginfo('Publishing {} elements'.format(
+        self._collection_output.publish(self._collection)
+
 
 def converter():
     rospy.init_node('convert_aruco_marker_array_to_std_marker', anonymous=True)
 
     pub = rospy.Publisher("aruco_marker_publisher/visualizable_markers", MarkerArray, queue_size=2)
-    transformer = MarkerTransformer(pub)
+
+    # check, whether data is to be held in fixed frame
+    collection = False
+    if rospy.get_param('~keep_in_fixed_frame', False):
+        fixed_frame = rospy.get_param('~fixed_frame', 'odom')
+        keep_duration_s = rospy.get_param('~keep_duration_s', 300)
+        output_name = "aruco_marker_publisher/collected_markers"
+        col_pub = rospy.Publisher(output_name, MarkerArray, queue_size=2)
+        collection = (col_pub, fixed_frame, keep_duration_s)
+        rospy.loginfo('Detected aruco markers are stored and published to {}'.format(output_name))
+    else:
+        rospy.loginfo('Detected aruco markers not stored.')
+
+    transformer = MarkerTransformer(pub, collection)
+
     rospy.Subscriber("aruco_marker_publisher/markers", ArucoMarkerArray, transformer.on_marker_array)
 
     rospy.spin()

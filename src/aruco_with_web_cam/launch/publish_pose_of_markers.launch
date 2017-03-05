@@ -21,7 +21,9 @@
         <param name="camera_frame"       value="web_cam"/>            <!-- frame wrt/ which the tf of the marker is published to /tf -->
     </node>
 
-    <node ns="$(arg web_cam_ns)" pkg="aruco_with_web_cam" type="visualize_aruco_markers" name="aruco_marker_rviz_visualizer" />
+    <node ns="$(arg web_cam_ns)" pkg="aruco_with_web_cam" type="visualize_aruco_markers" name="aruco_marker_rviz_visualizer" output="screen" >
+        <param name="keep_in_fixed_frame" value="true" />
+    </node>
 
     <node if="$(arg view)" ns="$(arg web_cam_ns)" pkg="image_view" type="image_view" name="aruco_markers_visualizer">
         <remap from="image" to="aruco_marker_publisher/result" />

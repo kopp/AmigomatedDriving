@@ -46,6 +46,8 @@
 
   <!-- visualize_aruco_markers -->
   <depend>rospy</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
   <depend>aruco_msgs</depend>
   <depend>visualization_msgs</depend>
   <depend>std_msgs</depend>
