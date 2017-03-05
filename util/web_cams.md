@@ -35,3 +35,16 @@ for example
 # configure
 
 To access the configuration, go to `http://<IP adress of camera>`.
+
+
+# power
+
+The web cam requires 5 VDC.
+
+You can use the Amigobot's Aux Expansion J8 (remove the small black plastic
+rectangle on top of the robot; J8 is the small 5 pin output): GND (-) is the
+pin at the end towards the serial port, 5 VDC (+) is the pin on the other side.
+
+See
+[here](http://robots.mobilerobots.com/wiki/AmigoBot_Aux/User_Power_Supply)
+for more info on the power supply options of the AmigoBot.
