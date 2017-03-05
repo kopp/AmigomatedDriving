@@ -10,6 +10,6 @@
   </include>
 
   <!-- visualization -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <node if="$(arg gui)" name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
 
 </launch>

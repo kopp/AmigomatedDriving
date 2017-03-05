@@ -1,0 +1,24 @@
+<!-- start default robot configuration, i.e. AmigoBot with edimax_ic_3115w_sxvga camera -->
+
+<launch>
+
+  <arg name="robot_port"    default="10.0.126.14:8101"  doc="port to access AmigoBot (for wifi 'ip:8101')" />
+  <arg name="camera_ip"     default="10.0.126.9"        doc="ip address of web cam" />
+
+  <!-- publish tf messages for the robot -->
+  <include file="$(find amigobot)/launch/publish_tfs.launch" />
+
+  <!-- communication with robot -->
+  <node name="RosAria" pkg="rosaria" type="RosAria">
+      <param name="port" value="$(arg robot_port)" />
+  </node>
+
+  <!-- camera -->
+  <include file="$(find web_cam_receiver)/launch/edimax_ic_3115w_rectified_standalone.launch">
+    <arg name="camera_ip" value="$(arg camera_ip)" />
+  </include>
+
+  <!-- visualization of sonars -->
+  <node name="sonar_fov_visu" pkg="amigobot" type="sonar_fov_visu" />
+
+</launch>
