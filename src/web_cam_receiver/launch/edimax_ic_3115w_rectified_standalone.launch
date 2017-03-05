@@ -18,7 +18,7 @@
     <arg name="view" default="false" doc="see rectified_image.launch" />
 
     <!-- set parameters used by web_cam_receiver from param; others should be set already -->
-    <param name="$(arg namespace)/frame_id" value="/$(arg namespace)" />
+    <param name="$(arg namespace)/frame_id" value="$(arg namespace)" />
     <param name="$(arg namespace)/camera_name" value="$(arg camera_name)" />
     <param name="$(arg namespace)/calibration_url" value="package://web_cam_receiver/calib/${NAME}_$(arg camera_resolution).yml" />
     <param name="$(arg namespace)/image_url" value="http://$(arg camera_ip)/snapshot.jpg" />

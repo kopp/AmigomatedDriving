@@ -18,7 +18,7 @@
         <param name="image_is_rectified" value="True"/>
         <param name="marker_size"        value="$(arg markerSize)"/>
         <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
-        <param name="camera_frame"       value="/web_cam"/>           <!-- frame wrt/ which the tf of the marker is published to /tf -->
+        <param name="camera_frame"       value="web_cam"/>            <!-- frame wrt/ which the tf of the marker is published to /tf -->
     </node>
 
     <node ns="$(arg web_cam_ns)" pkg="aruco_with_web_cam" type="visualize_aruco_markers" name="aruco_marker_rviz_visualizer" />
