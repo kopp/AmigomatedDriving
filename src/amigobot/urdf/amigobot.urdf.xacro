@@ -114,34 +114,61 @@
     </joint>
 
 
-    <!-- Camera; mounted on top front of robot; rotated to the right.
+    <!-- Camera; mounted on top front of robot
 
          load the xacro with
-         <param name="robot_description" command="$(find xacro)/xacro.py $(arg model) use_web_cam:=false" />
+         <param name="robot_description" command="$(find xacro)/xacro $(arg model) web_cam_position:='false'" />
          to not add a camera.
 
          For a camera, the z axis is in the direction of the view, x goes to
          the right (wrt/ view direction) and y downwards.
+
+         Parameters to place the web cam:
+
+         web_cam_position can be a triple x y z; relative position from the top
+            plate origin (small black plastic disc)
+
+            defaults to "0.063 0 0.054" which is the value for the lens of an
+            edimax_ic_3115w camera mounted directly on the robot (i.e. no
+            stand) s.th. the indentation that runs around the camera directly
+            touches the second screw holes from the front of the robot.
+
+            If this is 'false', no web cam is included in the urdf.
+
+         web_cam_rotation can be a triple roll pitch yaw for the camera
+            rotation.
+
+            The default is "pi/2 pi pi/2 " which is a camera that looks to the
+            front of the robot (i.e. z_camera is x_robot, y_camera is -z_robot).
+
+            Note: You can use this applett
+            http://www.ctralie.com/Teaching/COMPSCI290/Materials/EulerAnglesViz/
+            to easily determine rpy values.
+
+            Example values:
+            - "0 1.5707963267948966 0": camera looks to the front direction of
+                the robot and the camera "top" is on the right wrt/ view
+                (=robot) direction.
+            - "0 -1.5707963267948966 3.141592653589793": like above but camera
+                "top" is on the left wrt/ view direction.
          -->
-    <xacro:arg name="use_web_cam" default="true"/>
-    <xacro:if value="$(arg use_web_cam)">
+    <!-- arguments to this xacro file -->
+    <xacro:arg name="web_cam_position" default="0.063 0 0.054" />
+    <xacro:arg name="web_cam_rotation" default="1.5707963267948966 3.141592653589793 1.5707963267948966" />
+    <!-- make them parameter in xacro -->
+    <xacro:property name="web_cam_position_prop" value="$(arg web_cam_position)"/>
+    <xacro:if value="${web_cam_position_prop != 'false'}">
         <link name="web_cam">
             <visual>
                 <geometry>
-                    <box size="0.07 0.1 0.025"/>
+                    <box size="0.07 0.1 0.025"/> <!-- size of an edimax_ic_3115w -->
                 </geometry>
                 <material name="white"> <color rgba="1 1 1 1" /> </material>
             </visual>
         </link>
 
         <joint name="camera_to_top_plate" type="fixed">
-            <!-- camera is rotated; it looks to the front and the camera "top"
-                 is on the right wrt/ view (=robot) direction -->
-            <origin xyz="0.09 0 0.1" rpy="0 1.5707963267948966 0"/>
-            <!-- camera is rotated; it looks to the front and the camera "top"
-                 is on the left wrt/ view (=robot) direction
-            <origin xyz="0.09 0 0.1" rpy="0 -1.5707963267948966 3.141592653589793"/>
-            -->
+            <origin xyz="$(arg web_cam_position)" rpy="$(arg web_cam_rotation)"/>
             <parent link="top_plate"/>
             <child link="web_cam"/>
         </joint>
