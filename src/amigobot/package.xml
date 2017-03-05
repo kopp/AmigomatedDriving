@@ -48,6 +48,8 @@
   <!-- launch files -->
   <depend>amigobot_2dnav</depend>
   <depend>web_cam_receiver</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>robot_state_publisher</depend>
 
   <!-- sonar_fov_visu -->
   <depend>visualization_msgs</depend>
