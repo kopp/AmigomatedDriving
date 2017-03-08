@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# record all primary sensor data
+
+filename_base=$(date +%Y-%m-%d-%H-%M)
+
+echo recording primary sensor data with prefix $filename_base
+
+rosparam dump > ${filename_base}.param
+
+rosbag record -O ${filename_base} \
+    /RosAria/cmd_vel \
+    /RosAria/pose \
+    /RosAria/sonar \
+    /RosAria/sonar_pointcloud2 \
+    /joint_states \
+    /rosout_agg \
+    /sonar_fov \
+    /tf \
+    /tf_static \
+    /web_cam/camera_info \
+    /web_cam/image_raw \
+    /web_cam/image_rect_color
