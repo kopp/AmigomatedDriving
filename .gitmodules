@@ -4,3 +4,18 @@
 [submodule "src/external/amr-ros-config"]
 	path = src/external/amr-ros-config
 	url = https://github.com/MobileRobots/amr-ros-config.git
+[submodule "src/external/viso2"]
+	path = src/external/viso2
+	url = https://github.com/srv/viso2.git
+[submodule "src/external/PlaneSweepLib"]
+	path = src/external/PlaneSweepLib
+	url = https://github.com/bastienjacquet/PlaneSweepLib.git
+[submodule "src/external/lsd_slam"]
+	path = src/external/lsd_slam
+	url = https://github.com/tum-vision/lsd_slam.git
+[submodule "src/external/flea3"]
+	path = src/external/flea3
+	url = https://github.com/KumarRobotics/flea3.git
+[submodule "src/external/camera_base"]
+	path = src/external/camera_base
+	url = https://github.com/KumarRobotics/camera_base.git
