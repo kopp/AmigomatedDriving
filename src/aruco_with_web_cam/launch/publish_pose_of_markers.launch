@@ -2,12 +2,13 @@
 
     <!-- modified from aruco_ros marker_publisher.launch -->
 
-    <arg name="view"            default="false"     doc="whether to visualize result" />
+    <arg name="view"            default="false"     doc="whether to visualize result (image viewer with found markers as overlay)" />
+    <arg name="pub_for_rviz"    default="true"      doc="whether to publish the markers as visualization_msgs/MarkerArray" />
 
-    <arg name="web_cam_ns"      default="web_cam" doc="name space of the web cam images" />
+    <arg name="web_cam_ns"      default="web_cam"   doc="name space of the web cam images" />
 
-    <arg name="markerSize"      default="0.1"/>     <!-- in m -->
-    <arg name="ref_frame"       default=""/>    <!-- leave empty and the pose will be published wrt param parent_name -->
+    <arg name="markerSize"      default="0.1"       doc="side length of a marker in m" />
+    <arg name="ref_frame"       default=""          doc="leave empty and the pose will be published wrt param parent_name" />
 
 
     <node ns="$(arg web_cam_ns)" pkg="aruco_ros" type="marker_publisher" name="aruco_marker_publisher">
@@ -21,7 +22,7 @@
         <param name="camera_frame"       value="web_cam"/>            <!-- frame wrt/ which the tf of the marker is published to /tf -->
     </node>
 
-    <node ns="$(arg web_cam_ns)" pkg="aruco_with_web_cam" type="visualize_aruco_markers" name="aruco_marker_rviz_visualizer" output="screen" >
+    <node if="$(arg pub_for_rviz)" ns="$(arg web_cam_ns)" pkg="aruco_with_web_cam" type="visualize_aruco_markers" name="aruco_marker_rviz_visualizer" output="screen" >
         <param name="keep_in_fixed_frame" value="true" />
     </node>
 
