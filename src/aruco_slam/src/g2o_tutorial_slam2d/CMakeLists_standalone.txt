@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(g2o_tutorial_slam2d)
+
+
+# add cmake modules provided by g2o to find e.g. csparse
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../../../cmake_modules)
+
+find_package(G2O REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(CSparse REQUIRED)
+
+include_directories(${EIGEN3_INCLUDE_DIR})
+
+add_library(tutorial_slam2d_library SHARED
+  edge_se2_pointxy.cpp  se2.h                vertex_point_xy.h
+  edge_se2.cpp    edge_se2_pointxy.h    vertex_se2.cpp
+  edge_se2.h      rand.h                vertex_point_xy.cpp  vertex_se2.h
+  parameter_se2_offset.h parameter_se2_offset.cpp
+  types_tutorial_slam2d.h types_tutorial_slam2d.cpp
+  simulator.h simulator.cpp
+  g2o_tutorial_slam2d_api.h
+)
+
+target_link_libraries(tutorial_slam2d_library
+    ${G2O_CORE_LIBRARY}
+    ${G2O_SOLVER_CSPARSE}
+    ${G2O_STUFF_LIBRARY}
+    ${G2O_SOLVER_CSPARSE_EXTENSION}
+    ${CSPARSE_LIBRARY}
+    )
+
+add_executable(tutorial_slam2d
+  tutorial_slam2d.cpp
+)
+
+target_link_libraries(tutorial_slam2d tutorial_slam2d_library)
