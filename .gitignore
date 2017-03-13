@@ -12,3 +12,4 @@ core
 
 # temp files
 *~
+.*.swp

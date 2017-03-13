@@ -32,12 +32,23 @@ default catkin workspace layout.
 
 # Quick Start
 
-1. Install ros and aria like
-   [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA).
-   RosAria is included in this repo.
+Tested with Ubuntu 14.04 and 16.04.1.
+
+1. Install ros [as described here](http://wiki.ros.org/ROS/Installation).
+    Note: Do *not* follow the instructions
+    [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA)
+    because they install packages using `dpkg` (we only want to use `apt-get` or similar).
+1. Install all dependencies for this software
+
+        rosdep init # if you have not done this before
+        rosdep update
+        sudo apt-get update # or equivalent
+        rosdep install --from-paths ./src --ignore-src --default-yes
 1. Use this workspace:
 
-        catkin init && catkin build && source devel/setup.bash
+        catkin init
+        catkin build
+        source devel/setup.bash
 1. Connect to the robot, see information in the `util`, e.g.
 
         rosrun rosaria RosAria _port:=10.0.126.14:8101
@@ -45,9 +56,16 @@ default catkin workspace layout.
     and play with it
 
         rostopic pub -1 /RosAria/cmd_vel geometry_msgs/Twist '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+        
+    See [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA)
+    for more introductory stuff.
+
 
 Alternatively see [here](https://github.com/kopp/ros-dockers) for how to
 build a docker image with the contents of this package.
+
+*Note* You will need to source the `devel/setup.bash` every time you
+open a new terminal/start a new bashshell.
 
 
 # README.md
