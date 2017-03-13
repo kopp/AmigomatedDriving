@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="model"         default="$(find amigobot)/urdf/amigobot.urdf.xacro"     doc="path to xacro file" />
-  <arg name="gui"           default="false"                                         doc="whether to display a gui to modify the joint values." />
+  <arg name="gui"           default="true"                                         doc="whether to display a gui to modify the joint values." />
   <arg name="rvizconfig"    default="$(find amigobot)/rviz/urdf.rviz"               doc="path to rviz config file" />
 
   <include file="$(find amigobot)/launch/publish_tfs.launch" >

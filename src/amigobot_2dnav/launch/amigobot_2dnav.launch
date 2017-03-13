@@ -4,7 +4,7 @@
   <node name="map_server" pkg="map_server" type="map_server" args="$(find amigobot_2dnav)/office1.yaml"/>
 
   <!--- Run AMCL -->
-  <include file="$(find amigobot_2dnav)/launch/amcl_diff.launch" />
+  <include file="$(find amigobot_2dnav)/launch/amcl_diff_corrected.launch" />
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <remap from="/cmd_vel" to="/RosAria/cmd_vel"/>

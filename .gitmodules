@@ -4,3 +4,6 @@
 [submodule "src/external/amr-ros-config"]
 	path = src/external/amr-ros-config
 	url = https://github.com/MobileRobots/amr-ros-config.git
+[submodule "src/external/navigation"]
+	path = src/external/navigation
+	url = https://github.com/ros-planning/navigation.git

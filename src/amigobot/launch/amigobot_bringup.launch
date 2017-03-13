@@ -14,7 +14,7 @@
   <!-- visualization of sonars -->
   <node name="sonar_fov_visu" pkg="amigobot" type="sonar_fov_visu" />
 
-  <!-- navigation -->
-  <include file="$(find amigobot_2dnav)/launch/sample_node.launch"/>
+  <!-- sonar to pointcloud conversion -->
+  <include file="$(find amigobot_2dnav)/launch/sonar_to_laserscan.launch"/>
 
 </launch>
