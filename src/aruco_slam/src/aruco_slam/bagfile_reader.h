@@ -10,6 +10,7 @@
 #include <tf2_msgs/TFMessage.h>
 
 // tf helper
+#include <tf2/transform_datatypes.h> // Stamped
 #include <tf2_ros/buffer.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <tf2_eigen/tf2_eigen.h>
@@ -30,6 +31,7 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <queue>
 #include <memory> // unique_ptr
 
 // logging
@@ -54,16 +56,24 @@ private:
   /// transform messages from the system
   tf2_ros::Buffer tf_buffer_;
 
-  /// fixed frame
+  /// pseudo fixed frame
   std::string fixed_frame_;
+  /// fixed frame of the robot
+  std::string robot_base_;
+
+  /// Queue of aruco markers that are not yet transformed
+  std::queue<aruco_msgs::Marker> markers_to_transform_;
+
 
 public: // accessible data
   /// known poses of the robot
-  std::vector<g2o::SE2> robot_poses;
+  std::vector<tf2::Stamped<g2o::SE2>> robot_poses;
   /// known positions of landmarks
   /// this should be relatively small -- only one for each physical landmark
   /// currently first position in odom
-  std::vector<g2o::Vector2D> landmark_positions;
+  std::vector<tf2::Stamped<g2o::Vector2D>> landmark_positions;
+  /// Measurements of the landmarks relative to robot
+  std::vector<tf2::Stamped<g2o::Vector2D>> landmark_measurements;
 
 public:
   /// Open bag file to read with the required topics.
@@ -71,8 +81,9 @@ public:
   /// \param robot_pose_topic topic name with the measured pose of the robot
   /// \param marker_pose_topic topic name with the measured marker pose
   /// \param fixed_frame name of the frame to assume fixed
-  BagfileReader(std::string bagfile_path, std::string robot_pose_topic, std::string marker_pose_topic, std::string fixed_frame = "odom")
+  BagfileReader(std::string bagfile_path, std::string robot_pose_topic, std::string marker_pose_topic, std::string fixed_frame = "odom", std::string robot_base = "base_link")
     : fixed_frame_(fixed_frame)
+    , robot_base_(robot_base)
   {
     bag_.open(bagfile_path, rosbag::bagmode::Read);
 
@@ -118,7 +129,44 @@ public:
         for (auto const & transform_msg : tf_ptr->transforms)
         {
           tf_buffer_.setTransform(transform_msg, "bag_file", false);
-// TODO: Put new data to queue, then check here, whether the front can be transformed.  If so, do so and add to the appropriate data structures.
+
+          // try to transform the messages that need transformation
+          bool transformation_possible = !markers_to_transform_.empty();
+          while (transformation_possible && !markers_to_transform_.empty())
+          {
+            // tranform data from the queue
+            auto& marker = markers_to_transform_.front();
+
+            // transform into fixed frame
+            std::string error;
+            if (tf_buffer_.canTransform(fixed_frame_, marker.header.frame_id, marker.header.stamp, ros::Duration(0), &error) &&
+                tf_buffer_.canTransform(robot_base_,  marker.header.frame_id, marker.header.stamp, ros::Duration(0), &error))
+            {
+              // ignore covariance as it is not filled anyways :-(
+
+              // transform works only with PoseStamped
+              geometry_msgs::PoseStamped pose_input;
+              pose_input.header = marker.header;
+              pose_input.pose = marker.pose.pose;
+
+              // transform into base of robot
+              geometry_msgs::PoseStamped pose_robot_frame;
+              tf_buffer_.transform(pose_input, pose_robot_frame, fixed_frame_, ros::Duration(0));
+              landmark_measurements.emplace_back(g2o::Vector2D(pose_robot_frame.pose.position.x, pose_robot_frame.pose.position.y), pose_input.header.stamp, fixed_frame_);
+
+              // transform into fixed frame
+              geometry_msgs::PoseStamped pose_fixed_frame;
+              tf_buffer_.transform(pose_robot_frame, pose_fixed_frame, robot_base_, ros::Duration(0));
+              landmark_positions.emplace_back(g2o::Vector2D(pose_fixed_frame.pose.position.x, pose_fixed_frame.pose.position.y), pose_input.header.stamp, robot_base_);
+
+              // transformation worked, so remove from queue
+              markers_to_transform_.pop();
+            }
+            else
+            {
+              transformation_possible = false;
+            }
+          }
         }
         continue;
       }
@@ -139,7 +187,8 @@ public:
           // get yaw
           Eigen::Vector3d euler_angles = eigen_pose.rotation().eulerAngles(0, 1, 2);
           double theta = euler_angles(2);
-          robot_poses.emplace_back(odom_ptr->pose.pose.position.x, odom_ptr->pose.pose.position.y, theta);
+          // poses do not need tf, so just push them
+          robot_poses.emplace_back(g2o::SE2(odom_ptr->pose.pose.position.x, odom_ptr->pose.pose.position.y, theta), odom_ptr->header.stamp, fixed_frame_);
         }
         continue;
       }
@@ -154,33 +203,14 @@ public:
           if (known_landmark_ids_.find(marker.id) == known_landmark_ids_.end())
           {
             // landmark is not known
-            // transform into fixed frame
-            std::string error;
-            if (tf_buffer_.canTransform(fixed_frame_, marker.header.frame_id, marker.header.stamp, ros::Duration(0), &error))
-            {
-              // ignore covariance as it is not filled anyways :-(
-              // transform into fixed frame
-              // transform works only with PoseStamped
-              geometry_msgs::PoseStamped pose_input;
-              pose_input.header = marker.header;
-              pose_input.pose = marker.pose.pose;
-              geometry_msgs::PoseStamped pose_fixed_frame;
-              tf_buffer_.transform(pose_input, pose_fixed_frame, fixed_frame_, ros::Duration(0));
-              landmark_positions.emplace_back(pose_fixed_frame.pose.position.x, pose_fixed_frame.pose.position.y);
-            }
-            else
-            {
-              // transformation would fail
-              ROS_WARN_STREAM("Unable to transform landmark from " << marker.header.frame_id << " into fixed frame " << fixed_frame_ << " due to " << error);
-            }
+            markers_to_transform_.push(marker);
           }
         }
         continue;
       }
     }
-
-
   }
+
 
 protected:
 
