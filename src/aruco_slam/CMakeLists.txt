@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rosbag_storage tf2 tf2_ros tf2_geometry_msgs tf2_eigen
   geometry_msgs aruco_msgs nav_msgs tf2_msgs
   )
+# TODO: use libg2o here?
 
 # add cmake modules provided by g2o to find e.g. csparse
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
@@ -119,13 +120,15 @@ catkin_package(
 ## Build ##
 ###########
 
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  ${PROJECT_SOURCE_DIR}/${PROJECT_NAME}
-  ${PROJECT_SOURCE_DIR}/g2o_tutorial_slam2d
+  ${PROJECT_SOURCE_DIR}/src
+  ${PROJECT_SOURCE_DIR}/src/g2o_tutorial_slam2d
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
+  ${CSPARSE_INCLUDE_DIR}
   )
 
 ## Declare a C++ library
@@ -167,11 +170,19 @@ target_link_libraries(slam2d
     ${G2O_SOLVER_CSPARSE}
     ${G2O_STUFF_LIBRARY}
     ${G2O_SOLVER_CSPARSE_EXTENSION}
+    ${G2O_TYPES_SLAM2D}
     ${CSPARSE_LIBRARY}
     )
 target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
-  slam2d
+  # try not to use this but the official types
+  # slam2d
+    ${G2O_CORE_LIBRARY}
+    ${G2O_SOLVER_CSPARSE}
+    ${G2O_STUFF_LIBRARY}
+    ${G2O_SOLVER_CSPARSE_EXTENSION}
+    ${G2O_TYPES_SLAM2D}
+    ${CSPARSE_LIBRARY}
 )
 
 #############
