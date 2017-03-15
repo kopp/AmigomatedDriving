@@ -57,5 +57,5 @@
   <param name="recovery_alpha_slow" value="0.0"/>
   <param name="recovery_alpha_fast" value="0.0"/>-->
 </node>
-<node pkg="rosservice" type="rosservice" name="global_loc" args="call --wait /global_localization" launch-prefix="sleep 5 ;" />
+
 </launch>
