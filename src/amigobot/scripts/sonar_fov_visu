@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     rospy.sleep(0.5) # wait for listener :-)
 
-    loop_duration_s = 1.0
+    loop_duration_s = 0.1
     rate = rospy.Rate(1.0 / loop_duration_s)
     num_sonars = 8
 
