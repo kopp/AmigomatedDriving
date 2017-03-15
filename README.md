@@ -24,7 +24,7 @@ for more info on submodules.
 Add the `src` folder to a catkin workspace (i.e. create another workspace and
 link this `src` to the `src` there), or just create a workspace in the current
 directory (`catkin init`), so that `src` is used as source path for the
-workspace.
+workspace.  For the latter case see the Quick Start below.
 
 Note: The `.gitignore` already ignores the build/devel/... folders for a
 default catkin workspace layout.
@@ -38,9 +38,10 @@ Tested with Ubuntu 14.04 and 16.04.1.
     Note: Do *not* follow the instructions
     [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA)
     because they install packages using `dpkg` (we only want to use `apt-get` or similar).
+    Make sure, that you have installed `python-catkin-tools` as well.
 1. Install all dependencies for this software
 
-        rosdep init # if you have not done this before
+        sudo rosdep init # if you have not done this before
         git clone https://github.com/pal-robotics/aruco_ros.git src/external/aruco_ros # for ubuntu 16.04 only
         rosdep update
         sudo apt-get update # or equivalent
