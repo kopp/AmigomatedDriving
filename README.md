@@ -38,6 +38,7 @@ Tested with Ubuntu 14.04 and 16.04.1.
     Note: Do *not* follow the instructions
     [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA)
     because they install packages using `dpkg` (we only want to use `apt-get` or similar).
+    Make sure, that you have installed `python-catkin-tools` as well.
 1. Install all dependencies for this software
 
         sudo rosdep init # if you have not done this before
