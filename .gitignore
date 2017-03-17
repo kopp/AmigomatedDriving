@@ -12,3 +12,7 @@ core
 
 # temp files
 *~
+
+# g2o stuff
+debug.txt
+*.g2o
