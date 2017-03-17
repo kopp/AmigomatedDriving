@@ -19,10 +19,8 @@ using namespace g2o::tutorial;
 #include "g2o/core/optimization_algorithm_gauss_newton.h"
 #include "g2o/solvers/csparse/linear_solver_csparse.h"
 
-/*
 #include "aruco_slam/bagfile_reader.h"
 #include "aruco_slam/g2o_converter.h"
-*/
 
 using namespace std;
 using namespace g2o;
@@ -35,10 +33,12 @@ int main()
   /*********************************************************************************
    * creating the optimization problem
    ********************************************************************************/
-  /*
   aruco_slam::BagfileReader bagfile_reader("/data/2017-03-08-18-08_with_markers.bag", "/RosAria/pose", "/web_cam/aruco_marker_publisher/markers");
   bagfile_reader.extractData();
-  */
+
+  ROS_INFO_STREAM("Extracted " << bagfile_reader.robot_poses.size() << " robot poses.");
+  ROS_INFO_STREAM("Extracted " << bagfile_reader.landmark_positions.size() << " landmark positions.");
+  ROS_INFO_STREAM("Extracted " << bagfile_reader.landmark_measurements.size() << " landmark measurements.");
 
   typedef BlockSolver< BlockSolverTraits<-1, -1> >  SlamBlockSolver;
   typedef LinearSolverCSparse<SlamBlockSolver::PoseMatrixType> SlamLinearSolver;
@@ -52,7 +52,10 @@ int main()
 
   optimizer.setAlgorithm(solver);
 
+  aruco_slam::G2oConverter converter(optimizer, 0.0002, 1e-6, 0.0015);
+  converter.addData(bagfile_reader);
 
+  /*
   // adding the odometry to the optimizer
   // first adding all the vertices
   VertexSE2* robot = new VertexSE2;
@@ -72,6 +75,7 @@ int main()
   odometry->setMeasurement(SE2(0.7, 0, 0));
   //odometry->setInformation(
   optimizer.addEdge(odometry);
+  */
 
   // add the landmark observations
   /*
@@ -120,14 +124,19 @@ int main()
   cerr << "done." << endl;
 
   optimizer.save("tutorial_after.g2o");
+  cerr << "output saved" << endl;
 
   // freeing the graph memory
   optimizer.clear();
+  cerr << "optimizer cleared" << endl;
 
   // destroy all the singletons
   Factory::destroy();
+  cerr << "factory destroyed" << endl;
   OptimizationAlgorithmFactory::destroy();
+  cerr << "algorithm factory destroyed" << endl;
   HyperGraphActionLibrary::destroy();
+  cerr << "hypergraph action lib destroyed" << endl;
 
   return 0;
 }
