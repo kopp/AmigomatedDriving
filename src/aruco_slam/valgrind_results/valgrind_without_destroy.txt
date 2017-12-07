@@ -1,0 +1,37 @@
+==707== Memcheck, a memory error detector
+==707== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==707== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==707== Command: /root/AmigomatedDriving/devel/lib/aruco_slam/aruco_slam
+==707== 
+[0m[ INFO] [1489941560.435474390]: Extracted 4763 robot poses.[0m
+[0m[ INFO] [1489941560.470319997]: Extracted 2128 landmark positions.[0m
+[0m[ INFO] [1489941560.473325648]: Extracted 2128 landmark measurements.[0m
+Optimizing
+iteration= 0	 chi2= 0.000000	 time= 3.88749	 cumTime= 3.88749	 edges= 4762	 schur= 0
+iteration= 1	 chi2= 0.000000	 time= 1.91447	 cumTime= 5.80196	 edges= 4762	 schur= 0
+iteration= 2	 chi2= 0.000000	 time= 1.90942	 cumTime= 7.71138	 edges= 4762	 schur= 0
+iteration= 3	 chi2= 0.000000	 time= 1.90556	 cumTime= 9.61694	 edges= 4762	 schur= 0
+iteration= 4	 chi2= 0.000000	 time= 1.90506	 cumTime= 11.522	 edges= 4762	 schur= 0
+iteration= 5	 chi2= 0.000000	 time= 1.90547	 cumTime= 13.4275	 edges= 4762	 schur= 0
+iteration= 6	 chi2= 0.000000	 time= 1.90655	 cumTime= 15.334	 edges= 4762	 schur= 0
+iteration= 7	 chi2= 0.000000	 time= 1.90808	 cumTime= 17.2421	 edges= 4762	 schur= 0
+iteration= 8	 chi2= 0.000000	 time= 1.90915	 cumTime= 19.1513	 edges= 4762	 schur= 0
+iteration= 9	 chi2= 0.000000	 time= 1.90126	 cumTime= 21.0525	 edges= 4762	 schur= 0
+done.
+output saved
+optimizer cleared
+==707== 
+==707== HEAP SUMMARY:
+==707==     in use at exit: 3,868 bytes in 97 blocks
+==707==   total heap usage: 755,943 allocs, 755,846 frees, 83,665,172 bytes allocated
+==707== 
+==707== LEAK SUMMARY:
+==707==    definitely lost: 384 bytes in 17 blocks
+==707==    indirectly lost: 1,017 bytes in 32 blocks
+==707==      possibly lost: 435 bytes in 13 blocks
+==707==    still reachable: 2,032 bytes in 35 blocks
+==707==         suppressed: 0 bytes in 0 blocks
+==707== Rerun with --leak-check=full to see details of leaked memory
+==707== 
+==707== For counts of detected and suppressed errors, rerun with: -v
+==707== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

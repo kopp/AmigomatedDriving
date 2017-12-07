@@ -1,0 +1,380 @@
+==716== Memcheck, a memory error detector
+==716== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==716== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==716== Command: /root/AmigomatedDriving/devel/lib/aruco_slam/aruco_slam
+==716== 
+[0m[ INFO] [1489941724.450478815]: Extracted 4763 robot poses.[0m
+[0m[ INFO] [1489941724.486341719]: Extracted 2128 landmark positions.[0m
+[0m[ INFO] [1489941724.489410026]: Extracted 2128 landmark measurements.[0m
+Optimizing
+iteration= 0	 chi2= 0.000000	 time= 4.15873	 cumTime= 4.15873	 edges= 4762	 schur= 0
+iteration= 1	 chi2= 0.000000	 time= 1.93708	 cumTime= 6.0958	 edges= 4762	 schur= 0
+iteration= 2	 chi2= 0.000000	 time= 1.92212	 cumTime= 8.01793	 edges= 4762	 schur= 0
+iteration= 3	 chi2= 0.000000	 time= 1.91423	 cumTime= 9.93215	 edges= 4762	 schur= 0
+iteration= 4	 chi2= 0.000000	 time= 1.91431	 cumTime= 11.8465	 edges= 4762	 schur= 0
+iteration= 5	 chi2= 0.000000	 time= 1.91352	 cumTime= 13.76	 edges= 4762	 schur= 0
+iteration= 6	 chi2= 0.000000	 time= 1.91287	 cumTime= 15.6729	 edges= 4762	 schur= 0
+iteration= 7	 chi2= 0.000000	 time= 1.91584	 cumTime= 17.5887	 edges= 4762	 schur= 0
+iteration= 8	 chi2= 0.000000	 time= 1.91275	 cumTime= 19.5014	 edges= 4762	 schur= 0
+iteration= 9	 chi2= 0.000000	 time= 1.91084	 cumTime= 21.4123	 edges= 4762	 schur= 0
+done.
+output saved
+optimizer cleared
+==716== 
+==716== HEAP SUMMARY:
+==716==     in use at exit: 3,868 bytes in 97 blocks
+==716==   total heap usage: 755,943 allocs, 755,846 frees, 83,665,151 bytes allocated
+==716== 
+==716== 28 bytes in 1 blocks are possibly lost in loss record 26 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9298CF2: log4cxx::helpers::Transcoder::decode(std::string const&, std::string&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x925077A: log4cxx::LogManager::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x924B185: log4cxx::Logger::getLogger(char const*) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23E69: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x591B16C: ??? (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716== 
+==716== 28 bytes in 1 blocks are possibly lost in loss record 27 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9241E10: log4cxx::Level::getAll() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x92381E6: log4cxx::Hierarchy::Hierarchy() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x92504C4: log4cxx::LogManager::getLoggerRepository() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9250700: log4cxx::LogManager::getLoggerLS(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9250785: log4cxx::LogManager::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x924B185: log4cxx::Logger::getLogger(char const*) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23E69: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716== 
+==716== 29 bytes in 1 blocks are possibly lost in loss record 28 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9241900: log4cxx::Level::getInfo() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23BEF: ??? (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 29 bytes in 1 blocks are possibly lost in loss record 29 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9241750: log4cxx::Level::getWarn() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23BF8: ??? (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 29 bytes in 1 blocks are possibly lost in loss record 30 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9279AC0: log4cxx::spi::RootLogger::RootLogger(log4cxx::helpers::Pool&, log4cxx::helpers::ObjectPtrT<log4cxx::Level> const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x92380DE: log4cxx::Hierarchy::Hierarchy() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x92504C4: log4cxx::LogManager::getLoggerRepository() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9250700: log4cxx::LogManager::getLoggerLS(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9250785: log4cxx::LogManager::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x924B185: log4cxx::Logger::getLogger(char const*) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23E69: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716== 
+==716== 30 bytes in 1 blocks are possibly lost in loss record 32 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9241AB0: log4cxx::Level::getDebug() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23BE6: ??? (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 30 bytes in 1 blocks are possibly lost in loss record 33 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x92415A0: log4cxx::Level::getError() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23C01: ??? (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 30 bytes in 1 blocks are possibly lost in loss record 34 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x92413F0: log4cxx::Level::getFatal() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23C0A: ??? (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 35 bytes in 1 blocks are possibly lost in loss record 41 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x50AB880: char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag) (in /opt/ros/jade/lib/liborocos-kdl.so.1.3.0)
+==716==    by 0x714B87B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&, unsigned long, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9239E1B: log4cxx::Hierarchy::updateParents(log4cxx::helpers::ObjectPtrT<log4cxx::Logger>) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x923A6E4: log4cxx::Hierarchy::getLogger(std::string const&, log4cxx::helpers::ObjectPtrT<log4cxx::spi::LoggerFactory> const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x92376AD: log4cxx::Hierarchy::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9250710: log4cxx::LogManager::getLoggerLS(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9250785: log4cxx::LogManager::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x924B185: log4cxx::Logger::getLogger(char const*) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23EA3: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716== 
+==716== 39 bytes in 1 blocks are possibly lost in loss record 43 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9298CF2: log4cxx::helpers::Transcoder::decode(std::string const&, std::string&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x925077A: log4cxx::LogManager::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x924B158: log4cxx::Logger::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D24373: ros::console::impl::getHandle(std::string const&) (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591C237: ros::console::initializeLogLocation(ros::console::LogLocation*, std::string const&, ros::console::levels::Level) (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x50CF8B: main (aruco_slam.cpp:39)
+==716== 
+==716== 40 bytes in 1 blocks are possibly lost in loss record 46 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x925E865: log4cxx::helpers::OnlyOnceErrorHandler::OnlyOnceErrorHandler() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9206031: log4cxx::AppenderSkeleton::AppenderSkeleton() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D24059: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x591B16C: ??? (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 42 bytes in 1 blocks are possibly lost in loss record 48 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x925E852: log4cxx::helpers::OnlyOnceErrorHandler::OnlyOnceErrorHandler() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x9206031: log4cxx::AppenderSkeleton::AppenderSkeleton() (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D24059: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x591B16C: ??? (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 46 bytes in 1 blocks are possibly lost in loss record 51 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x714A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x714AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==716==    by 0x9298CF2: log4cxx::helpers::Transcoder::decode(std::string const&, std::string&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x925077A: log4cxx::LogManager::getLogger(std::string const&) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x924B185: log4cxx::Logger::getLogger(char const*) (in /usr/lib/liblog4cxx.so.10.0.0)
+==716==    by 0x8D23EA3: ros::console::impl::initialize() (in /opt/ros/jade/lib/librosconsole_log4cxx.so)
+==716==    by 0x591D040: ros::console::initialize() (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x591B16C: ??? (in /opt/ros/jade/lib/librosconsole.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716== 
+==716== 71 (16 direct, 55 indirect) bytes in 1 blocks are definitely lost in loss record 73 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C423FC: g2o::RegisterTypeProxy<g2o::EdgeSE2>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35A85: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 73 (16 direct, 57 indirect) bytes in 1 blocks are definitely lost in loss record 74 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C41F7C: g2o::RegisterTypeProxy<g2o::VertexSE2>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C358B8: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 76 (16 direct, 60 indirect) bytes in 1 blocks are definitely lost in loss record 75 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4287C: g2o::RegisterTypeProxy<g2o::EdgePointXY>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35C4D: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 77 (16 direct, 61 indirect) bytes in 1 blocks are definitely lost in loss record 76 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4227C: g2o::RegisterTypeProxy<g2o::EdgeSE2Prior>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C359ED: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 78 (16 direct, 62 indirect) bytes in 1 blocks are definitely lost in loss record 77 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4203C: g2o::RegisterTypeProxy<g2o::VertexPointXY>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35909: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 78 (16 direct, 62 indirect) bytes in 1 blocks are definitely lost in loss record 78 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C426FC: g2o::RegisterTypeProxy<g2o::EdgeSE2Offset>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35BB5: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 79 (16 direct, 63 indirect) bytes in 1 blocks are definitely lost in loss record 79 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C421BC: g2o::RegisterTypeProxy<g2o::CacheSE2Offset>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C359A1: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 79 (16 direct, 63 indirect) bytes in 1 blocks are definitely lost in loss record 80 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4233C: g2o::RegisterTypeProxy<g2o::EdgeSE2XYPrior>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35A39: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 79 (16 direct, 63 indirect) bytes in 1 blocks are definitely lost in loss record 81 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C424BC: g2o::RegisterTypeProxy<g2o::EdgeSE2PointXY>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35AD1: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 80 (16 direct, 64 indirect) bytes in 1 blocks are definitely lost in loss record 82 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C429FC: g2o::RegisterTypeProxy<g2o::EdgeSE2LotsOfXY>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35CE5: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 83 (16 direct, 67 indirect) bytes in 1 blocks are definitely lost in loss record 83 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C420FC: g2o::RegisterTypeProxy<g2o::ParameterSE2Offset>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35955: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 83 (16 direct, 67 indirect) bytes in 1 blocks are definitely lost in loss record 84 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4293C: g2o::RegisterTypeProxy<g2o::EdgeSE2TwoPointsXY>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35C99: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 84 (16 direct, 68 indirect) bytes in 1 blocks are definitely lost in loss record 85 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4263C: g2o::RegisterTypeProxy<g2o::EdgeSE2PointXYCalib>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35B69: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 85 (16 direct, 69 indirect) bytes in 1 blocks are definitely lost in loss record 86 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C427BC: g2o::RegisterTypeProxy<g2o::EdgeSE2PointXYOffset>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35C01: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 86 (16 direct, 70 indirect) bytes in 1 blocks are definitely lost in loss record 87 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65D3A61: g2o::Factory::registerType(std::string const&, g2o::AbstractHyperGraphElementCreator*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C4257C: g2o::RegisterTypeProxy<g2o::EdgeSE2PointXYBearing>::RegisterTypeProxy(std::string const&) (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x6C35B1D: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 101 (72 direct, 29 indirect) bytes in 1 blocks are definitely lost in loss record 89 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65BC3D9: g2o::HyperGraphActionLibrary::registerAction(g2o::HyperGraphElementAction*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C35E9A: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== 109 (72 direct, 37 indirect) bytes in 1 blocks are definitely lost in loss record 90 of 97
+==716==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==716==    by 0x65BC3D9: g2o::HyperGraphActionLibrary::registerAction(g2o::HyperGraphElementAction*) (in /opt/ros/jade/lib/libg2o_core.so)
+==716==    by 0x6C35D3C: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==716==    by 0x4010109: call_init.part.0 (dl-init.c:78)
+==716==    by 0x40101F2: call_init (dl-init.c:36)
+==716==    by 0x40101F2: _dl_init (dl-init.c:126)
+==716==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==716== 
+==716== LEAK SUMMARY:
+==716==    definitely lost: 384 bytes in 17 blocks
+==716==    indirectly lost: 1,017 bytes in 32 blocks
+==716==      possibly lost: 435 bytes in 13 blocks
+==716==    still reachable: 2,032 bytes in 35 blocks
+==716==         suppressed: 0 bytes in 0 blocks
+==716== Reachable blocks (those to which a pointer was found) are not shown.
+==716== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==716== 
+==716== For counts of detected and suppressed errors, rerun with: -v
+==716== ERROR SUMMARY: 30 errors from 30 contexts (suppressed: 0 from 0)

@@ -1,0 +1,205 @@
+==501== Invalid read of size 8
+==501==    at 0x6C40454: g2o::RegisterActionProxy<g2o::EdgeSE2PointXYBearingDrawAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4530 is 5,200 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid write of size 8
+==501==    at 0x65BB1EB: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4530 is 5,200 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x65BB1EE: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4540 is 5,216 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 4
+==501==    at 0x65BB220: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4640 is 5,472 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid free() / delete / delete[] / realloc()
+==501==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==501==    by 0x65BB231: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4630 is 5,456 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x65BB1FB: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4538 is 5,208 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 4
+==501==    at 0x65BB245: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c45c0 is 5,344 bytes inside an unallocated block of size 5,600 in arena "client"
+
+==501==
+==501== Invalid free() / delete / delete[] / realloc()
+==501==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==501==    by 0x65BB256: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x65BB288: g2o::HyperGraphElementAction::~HyperGraphElementAction() (in /opt/ros/jade/lib/libg2o_core.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c45b0 is 5,328 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid free() / delete / delete[] / realloc()
+==501==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4530 is 5,200 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40494: g2o::RegisterActionProxy<g2o::EdgeSE2PointXYDrawAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c4370 is 4,752 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C404D4: g2o::RegisterActionProxy<g2o::EdgeSE2DrawAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c41a0 is 4,288 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40514: g2o::RegisterActionProxy<g2o::VertexPointXYDrawAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c3fe0 is 3,840 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40554: g2o::RegisterActionProxy<g2o::VertexSE2DrawAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c3d10 is 3,120 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40594: g2o::RegisterActionProxy<g2o::EdgeSE2PointXYBearingWriteGnuplotAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c3b50 is 2,672 bytes inside an unallocated block of size 5,600 in arena "client"
+
+==501== Invalid read of size 8
+==501==    at 0x6C405D4: g2o::RegisterActionProxy<g2o::EdgeSE2PointXYWriteGnuplotAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c39a0 is 2,240 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40614: g2o::RegisterActionProxy<g2o::EdgeSE2WriteGnuplotAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c37f0 is 1,808 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40654: g2o::RegisterActionProxy<g2o::VertexPointXYWriteGnuplotAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c3640 is 1,376 bytes inside an unallocated block of size 5,600 in arena "client"
+==501==
+==501== Invalid read of size 8
+==501==    at 0x6C40694: g2o::RegisterActionProxy<g2o::VertexSE2WriteGnuplotAction>::~RegisterActionProxy() (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x78EC539: __cxa_finalize (cxa_finalize.c:56)
+==501==    by 0x6C36362: ??? (in /opt/ros/jade/lib/libg2o_types_slam2d.so)
+==501==    by 0x4010709: _dl_fini (dl-fini.c:252)
+==501==    by 0x78EC1A8: __run_exit_handlers (exit.c:82)
+==501==    by 0x78EC1F4: exit (exit.c:104)
+==501==    by 0x78D1F4B: (below main) (libc-start.c:321)
+==501==  Address 0xf3c3320 is 576 bytes inside an unallocated block of size 5,600 in arena "client"
+
+==501== HEAP SUMMARY:
+==501==     in use at exit: 2,707 bytes in 63 blocks
+==501==   total heap usage: 755,943 allocs, 755,910 frees, 83,665,333 bytes allocated
+==501==
+==501== LEAK SUMMARY:
+==501==    definitely lost: 240 bytes in 15 blocks
+==501==    indirectly lost: 0 bytes in 0 blocks
+==501==      possibly lost: 435 bytes in 13 blocks
+==501==    still reachable: 2,032 bytes in 35 blocks
+==501==         suppressed: 0 bytes in 0 blocks
+==501== Rerun with --leak-check=full to see details of leaked memory
+==501==
+==501== For counts of detected and suppressed errors, rerun with: -v
+==501== ERROR SUMMARY: 130 errors from 18 contexts (suppressed: 0 from 0)
+
