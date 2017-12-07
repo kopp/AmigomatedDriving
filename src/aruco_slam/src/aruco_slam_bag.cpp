@@ -1,3 +1,4 @@
+#include <cmath> // TODO: Necessary?
 
 // read bag files
 #include "aruco_slam/bagfile_reader.h"
@@ -13,6 +14,7 @@
 
 
 // add g2o types
+#include "g2o/types/slam2d/types_slam2d.h"
 G2O_USE_TYPE_GROUP(slam2d);
 
 
@@ -78,10 +80,14 @@ int main()
   ROS_INFO("optimizer.clear()");
 
   // destroy all the singletons
+  /*
   g2o::Factory::destroy();
   ROS_INFO("g2o::Factory::destroy()");
   g2o::OptimizationAlgorithmFactory::destroy();
   ROS_INFO("g2o::OptimizationAlgorithmFactory::destroy()");
   g2o::HyperGraphActionLibrary::destroy();
   ROS_INFO("g2o::HyperGraphActionLibrary::destroy()");
+  */
+
+  return 0;
 }

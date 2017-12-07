@@ -131,12 +131,14 @@ int main()
   cerr << "optimizer cleared" << endl;
 
   // destroy all the singletons
+  /* See cb5f625d
   Factory::destroy();
   cerr << "factory destroyed" << endl;
   OptimizationAlgorithmFactory::destroy();
   cerr << "algorithm factory destroyed" << endl;
   HyperGraphActionLibrary::destroy();
   cerr << "hypergraph action lib destroyed" << endl;
+  */
 
   return 0;
 }
