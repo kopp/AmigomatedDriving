@@ -41,11 +41,11 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>navigation</depend>
   <depend>pointcloud_to_laserscan</depend>
   <depend>teleop_twist_keyboard</depend>
   <depend>slam_gmapping</depend>
   <depend>move_base</depend>
+  <depend>map_server</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
