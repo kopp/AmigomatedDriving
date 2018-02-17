@@ -42,7 +42,7 @@ Tested with Ubuntu 14.04 and 16.04.1.
 1. Install all dependencies for this software
 
         sudo rosdep init # if you have not done this before
-        git clone https://github.com/pal-robotics/aruco_ros.git src/external/aruco_ros # for ubuntu 16.04 only
+        git clone --branch kinetic-devel https://github.com/pal-robotics/aruco_ros.git src/external/aruco_ros # for ubuntu 16.04 only
         rosdep update
         sudo apt-get update # or equivalent
         rosdep install --from-paths ./src --ignore-src --default-yes
@@ -58,7 +58,7 @@ Tested with Ubuntu 14.04 and 16.04.1.
     and play with it
 
         rostopic pub -1 /RosAria/cmd_vel geometry_msgs/Twist '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
-        
+
     See [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA)
     for more introductory stuff.
 
