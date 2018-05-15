@@ -74,3 +74,7 @@ open a new terminal/start a new bashshell.
 
 Please include a `README.md` in each catkin package and other folders which
 describes, what the purpose of the folder is/how it is organized etc.
+
+# LICENSE
+
+All parts of the repository are under the license mentioned in the LICENSE.txt file as long as it is not noted differently.
