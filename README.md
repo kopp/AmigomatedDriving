@@ -5,6 +5,8 @@ limited automated driving software on an AmigoBot,
 controlled by a RaspberryPi3, using [Ros](ros.org)
 with [RosAria](http://wiki.ros.org/ROSARIA).
 
+For a very brief overview over ROS, see
+[the ROS primer](RosPrimer.md).
 
 
 # set up this repo
