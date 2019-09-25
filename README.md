@@ -32,7 +32,7 @@ default catkin workspace layout.
 
 # Quick Start
 
-Tested with Ubuntu 14.04 and 16.04.1.
+Tested with Ubuntu 16.04 and ros kinetic.
 
 1. Install ros [as described here](http://wiki.ros.org/ROS/Installation).
     Note: Do *not* follow the instructions
@@ -41,16 +41,15 @@ Tested with Ubuntu 14.04 and 16.04.1.
     Make sure, that you have installed `python-catkin-tools` as well.
 1. Install all dependencies for this software
 
-        sudo rosdep init # if you have not done this before
-        git clone --branch kinetic-devel https://github.com/pal-robotics/aruco_ros.git src/external/aruco_ros # for ubuntu 16.04 only
+        sudo rosdep init  # if you have not done this before
         rosdep update
-        sudo apt-get update # or equivalent
+        sudo apt-get update  # or equivalent
         rosdep install --from-paths ./src --ignore-src --default-yes
 1. Use this workspace:
 
         catkin init
         catkin build
-        source devel/setup.bash
+        source devel/setup.bash  # you need to do this in every shell you want to use ros in
 1. Connect to the robot, see information in the `util`, e.g.
 
         rosrun rosaria RosAria _port:=10.0.126.14:8101
@@ -68,6 +67,13 @@ build a docker image with the contents of this package.
 
 *Note* You will need to source the `devel/setup.bash` every time you
 open a new terminal/start a new bashshell.
+
+
+# Hardware
+
+See in
+[`hardware_catalogue`](hardware_catalogue/Readme.md)
+for an overview of available hardware and how to use it.
 
 
 # README.md

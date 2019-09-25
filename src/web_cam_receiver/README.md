@@ -1,11 +1,9 @@
-Package to publish images that were received by a webcam to a ros topic.
+# Package to publish images that were received by a webcam to a ros topic.
 
 
 # Usage
 
-Execute
-
-    rosrun web_cam_receiver web_cam_receiver_node
+    % rosrun web_cam_receiver web_cam_receiver_node
 
 This will publish the images from a webcam attached at 10.0.126.9 to
 `/image_raw` in the format `sensor_msgs/Image`.  To easily display this, use
