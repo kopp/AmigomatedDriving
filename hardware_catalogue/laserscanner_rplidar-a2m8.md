@@ -31,3 +31,15 @@ do `ls -hal /dev/ttyUSB0` to check the permissions of that device and add your u
     su john  # re-login to be in the group
 
 if your name is `john` and the device is owned by `root:dialout`.
+
+
+
+# Power Supply
+
+The power source must be 5V DC ±2% with ripples of ~20 mV (max 50 mV).
+It must provide up to 1.5A at 5VDC. But it is recommended to have a power supply able to provide 3A to sustain the peak at the start of the LIDAR.
+
+For the connection, there is a barrel assembly
+(e.g. in the [official store](https://www.robotshop.com/en/small-barrel-connector-assembly-07x235-mm-needs-soldering.html))
+which provides a Power Barrel Connector Plug 0.70mm ID, 2.35mm OD EIAJ-1.
+Simply connect the barrel (with soldering) to the 5VDC source.
