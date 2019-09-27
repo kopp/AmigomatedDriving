@@ -1,6 +1,12 @@
 This package contains all files and tools that are needed to do mapping and navigation using an occupancy grid.
 
 
+# Sensors used
+
+Currently, the package uses the sonar sensors of the Amigobot.
+They are not the perfect choice to to localization/mapping with `amcl` -- a laser is a better choice.
+
+
 # launch
 
 ## amcl_diff_corrected.launch

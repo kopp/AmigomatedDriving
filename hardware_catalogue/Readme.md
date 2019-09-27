@@ -36,13 +36,8 @@ The Rovers are equipped with GPS modules.
 
 ## Udoo x86 ADVANCED PLUS
 
-TODO
+<a href="computing_udoo-x86-advanced-plus.md">IMAGE MISSING</a>
 
-[Datasheet](www.udoo.org/download/files/datasheets/udoo_x86ii_datasheet.pdf)
-
-Contains an ATMEGA32U4 with 12x Analog Input and up to 23x digital I/O (7 PWM)
-
-Wifi is provided by [Kit M.2 Wifi/BT](https://shop.udoo.org/eu/catalog/product/view/id/66/s/kit-m2-wifi-bt/category/3/).
 
 ## Raspberry Pi 3
 
@@ -50,18 +45,21 @@ TODO
 
 
 
-# Movement
+# Robot
 
 ## Amigobot
 
-TODO
+<a href="robot_amigobot.md"><img src="robot_amigobot.jpg" width=200></a>
+
 
 ## Rover
 
-TODO
+<a href="robot_rover.md"><img src="robot_rover.jpg" width=200></a>
 
 
 
 # Power
 
-TODO
+## Power Bank XT Power
+
+<a href="power_powerbank-XT-Power.md"><img src="power_powerbank-XT-Power.jpg" width=200></a>

@@ -78,6 +78,13 @@ See in
 for an overview of available hardware and how to use it.
 
 
+# Software
+
+See in
+[`software_catalogue`](software_catalogue/Readme.md)
+for some small ideas how to use the hardware provided here with ROS.
+
+
 # README.md
 
 Please include a `README.md` in each catkin package and other folders which

@@ -18,8 +18,9 @@ user name `admin`, password `1234`
 
 # run with ros
 
-In ros, use the provided package `web_cam_receiver`, which will publish the
-image as `sensor_msgs/Image`.
+In ros, use the provided package
+[`web_cam_receiver`](../src/web_cam_receiver),
+which will publish the image as `sensor_msgs/Image`.
 
 See the [Readme](../src/web_cam_receiver/README.md) there.
 
