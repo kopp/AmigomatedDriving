@@ -42,4 +42,4 @@ It must provide up to 1.5A at 5VDC. But it is recommended to have a power supply
 For the connection, there is a barrel assembly
 (e.g. in the [official store](https://www.robotshop.com/en/small-barrel-connector-assembly-07x235-mm-needs-soldering.html))
 which provides a Power Barrel Connector Plug 0.70mm ID, 2.35mm OD EIAJ-1.
-Simply connect the barrel (with soldering) to the 5VDC source.
+Simply connect the barrel (with soldering) to the 5VDC source; barrel interior is positive, outside negative.
