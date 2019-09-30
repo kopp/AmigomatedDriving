@@ -63,3 +63,11 @@ TODO
 ## Power Bank XT Power
 
 <a href="power_powerbank-XT-Power.md"><img src="power_powerbank-XT-Power.jpg" width=200></a>
+
+
+
+# Infrastructure
+
+## Router TP-Link
+
+<a href="network_tp-link-tl-wr841nd.md"><img src="network_tp-link-tl-wr841nd.jpg" width=200></a>
