@@ -58,11 +58,11 @@ If you use a VM with ros already installed, you can skip the first steps (see "*
 1. Connect to the robot, see information in the `util`, e.g.
 
         rosrun rosaria RosAria _port:=10.0.126.14:8101
-        
+
     if the robot is connected to your PC via WiFi or
 
         rosrun rosaria RosAria _port:=/dev/ttyUSB0
-        
+
     if it is connected by USB-serial-cable and play with it
 
         rostopic pub -1 /RosAria/cmd_vel geometry_msgs/Twist '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
@@ -121,3 +121,15 @@ A solution is to create a workspace somewhere else and just link the `src` folde
 
 You have dos line encodings in some file.
 Search for the offending string (e.g. `ag python` in the case above) to look for the file and then run `dos2unix <file>`.
+
+## You have not clue what goes on
+
+To enable DEBUG logging, create a file, e.g. `rosconsole.config`, with the content
+
+    log4j.logger.ros=INFO
+
+and export that file's name to
+
+    export ROSCONSOLE_CONFIG_FILE="/path/to/my/config/rosconsole.config"
+
+before running the ros node.
