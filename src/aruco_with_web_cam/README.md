@@ -42,5 +42,5 @@ This is a
 # Markers
 
 You can use
-[this site](http://terpconnect.umd.edu/~jwelsh12/enes100/markergen.html)
+[this site](http://chev.me/arucogen/)
 to generate Aruco Markers.
