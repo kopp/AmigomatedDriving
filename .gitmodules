@@ -7,3 +7,6 @@
 [submodule "src/usb_cam"]
 	path = src/usb_cam
 	url = https://github.com/ros-drivers/usb_cam.git
+[submodule "src/external/usb_cam"]
+	path = src/external/usb_cam
+	url = https://github.com/ros-drivers/usb_cam.git

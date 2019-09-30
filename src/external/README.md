@@ -19,3 +19,10 @@ package's contents into the folder `<package>`.
 Should the package update upstream, `cd` to the folder of that package, do a
 `git checkout` to the new version, then go back to this repo and do a
 `git commit -am "..."`.
+
+# usb_cam
+
+This package does exist as a binary package, however during testing it turned
+out, that it does currently not contain the latest fixes from the repo. As we
+had problems with segmentation faults on the target hardware, we do need the
+latest version. (> v0.3.6)
