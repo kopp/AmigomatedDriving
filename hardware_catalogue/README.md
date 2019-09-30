@@ -15,6 +15,7 @@
     - [Rover](#rover)
 - [Infrastructure](#infrastructure)
     - [Power Bank XT Power](#power-bank-xt-power)
+    - [Power Adapter: Amigo to Edimax Wireless Webcam](#power-adapter-amigo-to-edimax-wireless-webcam)
     - [Networking: TP-LINK TL-WR841ND](#networking-tp-link-tl-wr841nd)
 
 <!-- /TOC -->
@@ -68,6 +69,12 @@ without case
 ### Power Bank XT Power
 
 <a href="power_powerbank-XT-Power.md"><img src="images/power_powerbank-XT-Power.jpg" width=200></a>
+
+### Power Adapter: Amigo to Edimax Wireless Webcam
+
+<img src="images/amigo_to_edimax_power_adapter.jpg" width=200>
+
+Use this adapter to power the Edimax camera with the onboard power supply of the Amigobot.
 
 ### Networking: TP-LINK TL-WR841ND
 
