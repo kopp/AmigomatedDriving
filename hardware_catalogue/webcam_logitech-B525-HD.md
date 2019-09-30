@@ -1,6 +1,6 @@
 # Webcam Logitech B525 HD
 
-![Logitech B525 HD](webcam_logitech-b525-hd.jpg)
+![Logitech B525 HD](images/webcam_logitech-b525-hd.jpg)
 
 
 # setup

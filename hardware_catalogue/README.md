@@ -10,12 +10,10 @@
     - [GPS](#gps)
 - [Computing](#computing)
     - [Udoo x86 ADVANCED PLUS](#udoo-x86-advanced-plus)
-- [Robot](#robot)
-    - [Amigobot](#amigobot)
-    - [Rover](#rover)
-- [Infrastructure](#infrastructure)
-    - [Power Bank XT Power](#power-bank-xt-power)
-    - [Networking: TP-LINK TL-WR841ND](#networking-tp-link-tl-wr841nd)
+- [Amigobot](#amigobot)
+- [Rover](#rover)
+- [Power Bank XT Power](#power-bank-xt-power)
+- [](#)
 
 <!-- /TOC -->
 
@@ -53,22 +51,21 @@ without case
 
 [<img src="images/computing_udoo-x86-advanced-plus.png" width="200">](./computing_udoo-x86-advanced-plus.md)
 
-## Robot
+# Robot
 
-### Amigobot
+## Amigobot
 
 <a href="robot_amigobot.md"><img src="images/robot_amigobot.jpg" width=200></a>
 
-### Rover
+## Rover
 
 <a href="robot_rover.md"><img src="images/robot_rover.jpg" width=200></a>
 
-## Infrastructure
+# Others
 
-### Power Bank XT Power
+## Power Bank XT Power
 
 <a href="power_powerbank-XT-Power.md"><img src="images/power_powerbank-XT-Power.jpg" width=200></a>
 
-### Networking: TP-LINK TL-WR841ND
+## Networking: TP-LINK TL-WR841ND
 
-<a href="network_tp-link-tl-wr841nd.md"><img src="images/network_tp-link-tl-wr841nd.jpg" width=200></a>

@@ -4,3 +4,6 @@
 [submodule "src/external/amr-ros-config"]
 	path = src/external/amr-ros-config
 	url = https://github.com/MobileRobots/amr-ros-config.git
+[submodule "src/usb_cam"]
+	path = src/usb_cam
+	url = https://github.com/ros-drivers/usb_cam.git

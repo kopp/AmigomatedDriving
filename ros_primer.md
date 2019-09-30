@@ -1,10 +1,8 @@
 # ROS Primer
 
+## ROS Contents
 
-
-# ROS Contents
-
-The Robotic Operationg Sysstem ROS provides
+The Robotic Operating System (ROS) provides:
 
 - drivers to access hardware
 - a message passing system (rosmessages being pushed to and read from topics)
@@ -16,9 +14,7 @@ The Robotic Operationg Sysstem ROS provides
 - a build and dependency management system (`catkin`)
 - tooling to start up complex sets of nodes to perform more complex tasks
 
-
-
-# Namespaces
+## Namespaces
 
 To start a node in a namespace, run
 
@@ -26,9 +22,7 @@ To start a node in a namespace, run
 
 If a node normally publishes to `foo`, it will now be publishing to `/ns/foo`.
 
-
-
-# Remap Topics
+## Remap Topics
 
 Remap topics for a node when launching:
 
@@ -36,9 +30,7 @@ Remap topics for a node when launching:
 
 will now publish to `new_name`, if it internally used the name `name`.
 
-
-
-# Set parametesr
+## Set parametesr
 
 set globally:
 
