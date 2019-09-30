@@ -35,15 +35,18 @@ default catkin workspace layout.
 # Quick Start
 
 Tested with Ubuntu 16.04 and ros kinetic.
+If you use a VM with ros already installed, you can skip the first steps (see "**start here ...**" below).
 
 1. Install ros [as described here](http://wiki.ros.org/ROS/Installation).
     Note: Do *not* follow the instructions
     [here](http://wiki.ros.org/ROSARIA/Tutorials/How%20to%20use%20ROSARIA)
     because they install packages using `dpkg` (we only want to use `apt-get` or similar).
     Make sure, that you have installed `python-catkin-tools` as well.
-1. Install all dependencies for this software
+1. Initialize rosdep
 
         sudo rosdep init  # if you have not done this before
+1. Install all dependencies for this software (**start here if you had ros already installed**)
+
         rosdep update
         sudo apt-get update  # or equivalent
         rosdep install --from-paths ./src --ignore-src --default-yes
@@ -55,8 +58,12 @@ Tested with Ubuntu 16.04 and ros kinetic.
 1. Connect to the robot, see information in the `util`, e.g.
 
         rosrun rosaria RosAria _port:=10.0.126.14:8101
+        
+    if the robot is connected to your PC via WiFi or
 
-    and play with it
+        rosrun rosaria RosAria _port:=/dev/ttyUSB0
+        
+    if it is connected by USB-serial-cable and play with it
 
         rostopic pub -1 /RosAria/cmd_vel geometry_msgs/Twist '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
 
