@@ -67,7 +67,7 @@ Access terminal per
 Hold down `x` while starting AmigoBot, then when some text appears press
 _Enter_.
 
-
+Set mode to `0: server` and connectivity to `1: WiFi only`
 
 
 # Full Lantronix default dump
