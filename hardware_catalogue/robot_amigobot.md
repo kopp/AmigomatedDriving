@@ -15,6 +15,12 @@ See [the manual](https://www.generationrobots.com/media/AmigoGuide.pdf).
 
 ![Remote Controlled Mode](amigo_usecase_remote-controlled-mode.jpeg)
 
+For remote controlled mode, see
+[`amigobot_wifi_settings.md`](amigobot_wifi_settings.md)
+for how the wifi should be configured so that the amigobots in default settings can connect to it.
+See also the
+[`utils`](../util/README.md)
+folder -- e.g. for how to directly connect to the robot using only a laptop.
 
 
 # Use with ros
