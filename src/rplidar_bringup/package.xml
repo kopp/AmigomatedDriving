@@ -52,6 +52,7 @@
   <depend>rplidar_ros</depend>
   <depend>gmapping</depend>
   <depend>amcl</depend>
+  <depend>map_server</depend>
 
 
 

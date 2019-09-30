@@ -1,0 +1,20 @@
+<launch>
+    <param name="use_sim_time" value="false"/>
+     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+      <remap from="scan" to="/scan"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="maxUrange" value="2."/>
+      <param name="maxRange" value="2.1"/>
+      <param name="linearUpdate" value="0.1"/>
+      <param name="angularUpdate" value="0.01"/>
+      <param name="temporalUpdate" value="-1"/> 
+      <param name="particles" value="200"/>  
+      <param name="minimumScore" value="300."/>
+      <param name="delta" value="0.05" />
+      <param name="map_update_interval" value="1." />
+      <param name="srr" value="0.1" />
+      <param name="srt" value="0.2" />
+      <param name="str" value="0.1" />
+      <param name="stt" value="0.2" />
+    </node>
+</launch>
