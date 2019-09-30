@@ -41,6 +41,12 @@ This is a
 
 # Markers
 
-You can use
+To generate markers, use the `optimalmarkers` tool from the `aruco` package.
+This command generates 3 different markers of size 1000x1000 pixels and stores
+them in the folder `/tmp/`:
+
+    rosrun aruco optimalmarkers 3 /tmp/ 1000
+
+Note: Using markers from
 [this site](http://chev.me/arucogen/)
-to generate Aruco Markers.
+*did not* work.
