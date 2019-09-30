@@ -9,6 +9,8 @@ project(rplidar_bringup)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rplidar_ros
+  gmapping
+  amcl
 )
 
 ## System dependencies are found with CMake's conventions

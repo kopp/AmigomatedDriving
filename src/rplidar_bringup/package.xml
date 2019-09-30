@@ -50,6 +50,9 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <depend>rplidar_ros</depend>
+  <depend>gmapping</depend>
+  <depend>amcl</depend>
+
 
 
   <!-- The export tag contains other, unspecified, tags -->
