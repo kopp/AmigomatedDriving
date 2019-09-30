@@ -116,3 +116,8 @@ A solution is to create a workspace somewhere else and just link the `src` folde
         ln -s /media/share/amigomateddriving/src .
         catkin init
         catkin build
+
+## `catkin build` produces `/usr/bin/env python\r: No such file or directory`
+
+You have dos line encodings in some file.
+Search for the offending string (e.g. `ag python` in the case above) to look for the file and then run `dos2unix <file>`.
