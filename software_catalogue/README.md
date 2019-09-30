@@ -18,10 +18,3 @@ The
 [`aruco_with_web_cam`](../src/aruco_with_web_cam)
 package allows you to have printed markers recognized via camera.
 You can use them to simulate landmarks or object detection.
-
-
-
-# Mapper 3D
-
-[Mapper 3 Basic](Mapper3Basic.md) is a software package by the makers of
-amigobot which can map and localize using the amigos' sonar.
