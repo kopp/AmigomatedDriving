@@ -9,11 +9,11 @@ See [the manual](https://www.generationrobots.com/media/AmigoGuide.pdf).
 
 ## Autonomous Mode
 
-![Autonomous Mode](amigo_usecase_autonomous-mode.jpeg)
+![Autonomous Mode](images/amigo_usecase_autonomous-mode.jpeg)
 
 ## Remote Controlled Mode
 
-![Remote Controlled Mode](amigo_usecase_remote-controlled-mode.jpeg)
+![Remote Controlled Mode](images/amigo_usecase_remote-controlled-mode.jpeg)
 
 For remote controlled mode, see
 [`amigobot_wifi_settings.md`](amigobot_wifi_settings.md)

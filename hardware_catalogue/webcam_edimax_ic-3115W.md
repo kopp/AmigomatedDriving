@@ -1,7 +1,6 @@
 # Webcam Edimax IC-3115W.
 
-
-![Edimax IC-3115W](webcam_edimax_ic-3115W.jpg)
+![Edimax IC-3115W](images/webcam_edimax_ic-3115W.jpg)
 
 
 # basics
