@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rplidar_bringup</name>
+  <version>0.0.0</version>
+  <description>Provides the necessary packages to get rplidar working.</description>
+  <maintainer email="robert@bosch.com">Robert Bosch</maintainer>
+
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rplidar_ros</depend>
+  <export>
+  </export>
+</package>
