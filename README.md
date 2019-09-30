@@ -100,3 +100,24 @@ describes, what the purpose of the folder is/how it is organized etc.
 # LICENSE
 
 All parts of the repository are under the license mentioned in the LICENSE.txt file as long as it is not noted differently.
+
+
+# Trouble Shooting
+
+## `catkin build` produces `Could not create symlink`
+
+It is possible, that the file system that you have your workspace in, does not support symbolic links.
+This happens, if you have the workspace cloned on a windows folder and shared this folder with your linux in a VM.
+A solution is to create a workspace somewhere else and just link the `src` folder into that (or move it)
+
+		cd ~
+        mkdir workspace
+        cd workspace
+        ln -s /media/share/amigomateddriving/src .
+        catkin init
+        catkin build
+
+## `catkin build` produces `/usr/bin/env python\r: No such file or directory`
+
+You have dos line encodings in some file.
+Search for the offending string (e.g. `ag python` in the case above) to look for the file and then run `dos2unix <file>`.
