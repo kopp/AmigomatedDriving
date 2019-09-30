@@ -41,7 +41,6 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>aruco_ros</depend>
   <depend>image_view</depend>
 
   <!-- visualize_aruco_markers -->
