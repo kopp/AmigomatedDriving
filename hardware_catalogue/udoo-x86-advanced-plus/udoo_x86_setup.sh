@@ -116,7 +116,7 @@ git clone --recursive $AmigomatedDrivingGit $AmigomatedDrivingFolderName
 # set.
 rosdep install --rosdistro kinetic --from-paths "${AmigomatedDrivingFolderName}/src" --ignore-src --default-yes
 
-# TODO: disable splash on boot
+# Note: Maybe it would be nice to disable splash on boot?
 
 # if requested, make this a catkin workspace and build
 if $build

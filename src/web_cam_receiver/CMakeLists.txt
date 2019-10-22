@@ -122,7 +122,7 @@ include_directories(
 )
 
 
-# hack for qtcreator: include headers in target
+# include headers in target so that IDEs display the headers as well
 file(GLOB_RECURSE HEADER_FILES *.h)
 
 ## Declare a C++ library

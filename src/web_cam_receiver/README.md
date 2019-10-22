@@ -11,7 +11,7 @@ This will publish the images from a webcam attached at 10.0.126.9 to
     % rosrun image_view image_view image:=/image_raw
 
 
-# TODO
+# Possible Improvements
 
 - Use timeout if cam is not accessible
 - Parameterize topic name, IP, username/password, loop rate, frame id
