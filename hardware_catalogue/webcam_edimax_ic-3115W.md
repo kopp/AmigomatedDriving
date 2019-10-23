@@ -1,5 +1,6 @@
-Webcam
+# Webcam Edimax IC-3115W.
 
+![Edimax IC-3115W](images/webcam_edimax_ic-3115W.jpg)
 
 
 # basics
@@ -14,10 +15,16 @@ They will use the same WiFi as the robots do.
 user name `admin`, password `1234`
 
 
-# image
+# run with ros
 
-In ros, use the provided package `web_cam_receiver`, which will publish the
-image as `sensor_msgs/Image`.
+In ros, use the provided package
+[`web_cam_receiver`](../src/web_cam_receiver),
+which will publish the image as `sensor_msgs/Image`.
+
+See the [Readme](../src/web_cam_receiver/README.md) there.
+
+
+# access image with other tools
 
 To access the live image in a web browser, go to
 

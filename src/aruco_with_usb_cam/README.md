@@ -6,10 +6,10 @@ for more info on Aruco
 
 There are two launch files in this package that simplify to work with
 `aruco_ros`.  They are written in a way that they work nicely with
-`web_cam_receiver`; i.e. it should be possible to e.g.
+`usb_cam_receiver`; i.e. it should be possible to e.g.
 
-    roslaunch web_cam_receiver edimax_ic_3115w_rectified_standalone.launch
-    roslaunch aruco_with_web_cam track_single_marker.launch
+    roslaunch usb_cam_receiver edimax_ic_3115w_rectified_standalone.launch
+    roslaunch aruco_with_usb_cam track_single_marker.launch
 
 In both cases, a topic `result` publishes the camera image with an overlay of
 the found Aruco Marker.
@@ -41,12 +41,6 @@ This is a
 
 # Markers
 
-To generate markers, use the `optimalmarkers` tool from the `aruco` package.
-This command generates 3 different markers of size 1000x1000 pixels and stores
-them in the folder `/tmp/`:
-
-    rosrun aruco optimalmarkers 3 /tmp/ 1000
-
-Note: Using markers from
+You can use
 [this site](http://chev.me/arucogen/)
-*did not* work.
+to generate Aruco Markers.

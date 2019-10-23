@@ -1,6 +1,10 @@
-% AmigoBot and WiFi
+# AmigoBot and WiFi
 
 # Network configuration
+
+## USB to Serial Adapter Delock
+
+On Windows/MacOS you need to install a driver to use the Serial adapter available [here](https://www.delock.de/produkte/G_61425/merkmale.html?setLanguage=en)
 
 ## access settings
 
@@ -16,9 +20,9 @@ DHCP: from 10.0.126.20 to 10.0.126.200
 
 Network settings: gateway 10.0.126.1 (router IP), netmask 255.255.255.0
 
-To connect to the device when in WiFi, just access the IP address using a web
-browser.  Make sure to not use any proxy!  Both password and username are
-blank.
+To connect to the device when in WiFi, just access the IP address using a web browser.
+Make sure to not use any proxy!
+Both password and username are blank.
 
 
 ## Initial settings
@@ -63,7 +67,7 @@ Access terminal per
 Hold down `x` while starting AmigoBot, then when some text appears press
 _Enter_.
 
-
+Set mode to `0: server` and connectivity to `1: WiFi only`
 
 
 # Full Lantronix default dump

@@ -1,0 +1,39 @@
+<launch>
+
+    <!-- modified from aruco_ros single.launch -->
+
+    <arg name="view"            default="false"     doc="whether to visualize result" />
+    <arg name="usb_cam_ns"      default="usb_cam"   doc="name space of the web cam images" />
+    <arg name="markerId"        default="26"/>
+    <arg name="markerSize"      default="0.1"/>    <!-- in m -->
+    <arg name="eye"             default="left"/>
+    <arg name="marker_frame"    default="aruco_marker"/>
+    <arg name="ref_frame"       default=""/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+
+    <node pkg="usb_cam" type="usb_cam_node" name="usb_cam">
+        <param name="pixel_format"        value="yuyv"/>
+        <param name="camera_info_url"     value="file://$(find aruco_with_usb_cam)/launch/usb_cam.yaml"/>
+    </node>
+
+
+    <node ns="$(arg usb_cam_ns)" pkg="aruco_ros" type="single" name="aruco_single">
+        <!-- input topics; use topics from same ns -->
+        <remap from="/image"             to="image_raw" />
+        <remap from="/camera_info"       to="camera_info" />
+
+        <param name="image_is_rectified" value="False"/>
+        <param name="marker_size"        value="$(arg markerSize)"/>
+        <param name="marker_id"          value="$(arg markerId)"/>
+        <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="camera_frame"       value="/usb_cam"/>           <!-- frame wrt/ which the tf of the marker is published to /tf -->
+        <param name="marker_frame"       value="$(arg marker_frame)" />
+    </node>
+
+    <node if="$(arg view)" ns="$(arg usb_cam_ns)" pkg="image_view" type="image_view" name="aruco_single_result">
+        <remap from="image" to="aruco_single/result" />
+    </node>
+
+
+
+</launch>
+
